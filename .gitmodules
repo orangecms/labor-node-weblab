@@ -1,24 +1,24 @@
 [submodule "compression"]
 	path = modules/compression
-	url = git@github.com:expressjs/compression.git
+	url = https://github.com:expressjs/compression.git
 [submodule "express"]
 	path = modules/express
-	url = git@github.com:strongloop/express.git
+	url = https://github.com:strongloop/express.git
 [submodule "jade"]
 	path = modules/jade
-	url = git@github.com:jadejs/jade.git
+	url = https://github.com:jadejs/jade.git
 [submodule "komponist"]
 	path = modules/komponist
-	url = git@github.com:hughsk/komponist.git
+	url = https://github.com:hughsk/komponist.git
 [submodule "method-override"]
 	path = modules/method-override
-	url = git@github.com:expressjs/method-override.git
+	url = https://github.com:expressjs/method-override.git
 [submodule "mpd"]
 	path = modules/mpd.js
-	url = git@github.com:andrewrk/mpd.js.git
+	url = https://github.com:andrewrk/mpd.js.git
 [submodule "mpdsocket"]
 	path = modules/node-mpdsocket
-	url = git@github.com:ewenig/node-mpdsocket.git
+	url = https://github.com:ewenig/node-mpdsocket.git
 [submodule "socket.io"]
 	path = modules/socket.io
-	url = git@github.com:socketio/socket.io.git
+	url = https://github.com:socketio/socket.io.git
