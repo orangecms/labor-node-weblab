@@ -1,0 +1,7 @@
+{
+    "httpport": 80,
+    "canconfig": {
+           "port": 2342,
+           "hostname": "localhost"
+    }
+}

@@ -1,0 +1,97 @@
+extends layoutdesktop
+script(src="/socket.io/socket.io.js")
+
+block menu
+  div.navbar.navbar-inverse.navbar-static-top
+    div.container
+      div.navbar-header
+        button.navbar-toggle(type='button', data-toggle='collapse', data-target='.navbar-collapse')
+          span.sr-only Toggle navigation
+          span.icon-bar
+          span.icon-bar
+          span.icon-bar
+        a.navbar-brand(href='#') #{pagetitle}
+      div.collapse.navbar-collapse
+        ul.nav.navbar-nav
+          li.active: a(href="#") Home
+          li: a(href='#config', data-toggle='modal') Einstellungen
+
+block content
+  div.container
+    div.row
+      div.col-md-6
+        ul.nav.nav-tabs
+          each room, i in rooms
+            if i === 0
+              li.active: a(href='#tab#{room.name}', data-toggle='tab') #{room.name}
+            else
+              li: a(href='#tab#{room.name}', data-toggle='tab') #{room.name}
+        div.tab-content
+          each room, i in rooms
+            div(id='tab#{room.name}', class='#{i===0 ? "tab-pane active" : "tab-pane"}')
+              each device in room.devices
+                div
+                  h4 #{device.name}
+                  each channel in device.channels
+                    div
+                      h5 #{channel.name}
+                      div.well
+                        if channel.type == "lockedsliders"
+                          div.row
+                            div.col-lg-9.col-md-10.col-sm-7.col-xs-10
+                              each subchannel in channel.subchannels
+                                if subchannel.type == "sld"
+                                  div.row(style='margin: 20px 0;')
+                                    div.col-md-4.col-sm-4.col-xs-4 #{subchannel.name}
+                                    div.col-md-6.col-sm-6.col-xs-5
+                                      if 'max' in subchannel
+                                        div(id='#{subchannel.id}').nvSlider.lockable(style='margin: 15px; width: 250px;', data-slider-max='#{subchannel.max}')
+                                      else
+                                        div(id='#{subchannel.id}').nvSlider.lockable(style='margin: 15px; width: 250px;')
+                            div.col-lg-1.col-md-1.col-sm-1.col-xs-1
+                              button.btn.lock.btn-default(id='#{channel.id}', style='height:100%;margin: 10px;padding:160px 10px;text-align:center', type='button', aria-pressed='true' data-toggle='button')
+                                span.glyphicon.glyphicon-link
+                          each subchannel in channel.subchannels
+                            if subchannel.type == "btn"
+                              button.btn.nvButton.btn-danger(id='#{subchannel.id}', type='button', data-toggle='button') #{subchannel.name}
+                        else
+                          each subchannel in channel.subchannels
+                            if subchannel.type == "swt"
+                              button(id='#{subchannel.id}').btn.nvButton.btn-danger(type='button', data-toggle='button') Aus
+                            if subchannel.type == "sld"
+                              if 'max' in subchannel
+                                div(id='#{subchannel.id}').nvSlider(style='margin: 15px; width: 250px;', data-slider-max='#{subchannel.max}')
+                              else
+                                div(id='#{subchannel.id}').nvSlider(style='margin: 15px; width: 250px;')
+                            if subchannel.type == "btn"
+                              if 'image' in subchannel
+                                button(id='#{subchannel.id}').btn.btn-lg
+                                  span(class='glyphicon #{subchannel.image}')
+                              else
+                                div(id='#{subchannel.id}').btn.nvButton.btn-info(type='button' style='margin: 5px;') #{subchannel.name}
+                            if subchannel.type == "graph"
+                              div(id='#{subchannel.id}').graph-container
+                              div(id='#{subchannel.id}axis0').left-section
+                              div(id='#{subchannel.id}chart').right-section
+                            if subchannel.typw == "text"
+                              div(id='#{subchannel.id}')
+      div.col-md-6
+        button(onclick='show()') test desktop notification
+
+block settings
+  div.modal.fade#config(tabindex='-1', role='dialog', aria-labelledby='myModalLabel', aria-hidden='true')
+    div.modal-dialog
+      div.modal-content
+        div.modal-header
+          button.close(type='button', data-dismiss='modal', aria-hidden='true') &times;
+          h4.modal-title Einstellungen
+        div.modal-body
+          p Benachrichtigungen &uuml;ber: Türen, Bewegungsmelder, Licht, Klingel
+          p: button(onclick='authorize()') Autorisierung für Benachrichtigungen anfordern.
+        div.modal-footer
+          button.btn.btn-default(type='button',data-dismiss='modal') Close
+          button.btn.btn-primary(type='button') Save changes
+
+block footer
+  div.footer
+    p by dr4go, siro, e7p

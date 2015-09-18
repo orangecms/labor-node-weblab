@@ -1,0 +1,37 @@
+!!!
+html
+    head
+        title= "Real time CAN dump"
+        link(rel='stylesheet', href='/css/candump.css')
+        script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js')
+        script(src='/chat.js')
+        script(src='/socket.io/socket.io.js')
+    body
+        h1 realtime CAN dump  
+        div#divdesc(style='width: 500px; height: 100px; margin: 0 0 30px 0;')
+            table#tabledesc
+                thead
+                tbody
+                    tr
+                        td 
+                        td 
+                        td 
+                        td.rotate(style="color:#FF6666") src address
+                        td.rotate(style="color:#FFCCCC") src port
+                        td.rotate(style="color:#66FF66") dest addess
+                        td.rotate(style="color:#CCFFCC") dest port
+                        td.rotate(style="color:#6666FF") dlc
+                        td.rotate(style="color:#CCCCCC") payload byte 0
+                        td.rotate(style="color:#EEEEEE") payload byte 1
+                        td.rotate(style="color:#CCCCCC") payload byte 2
+                        td.rotate(style="color:#EEEEEE") payload byte 3
+                        td.rotate(style="color:#CCCCCC") payload byte 4
+                        td.rotate(style="color:#EEEEEE") payload byte 5
+                        td.rotate(style="color:#CCCCCC") payload byte 6
+                        td.rotate(style="color:#EEEEEE") payload byte 7
+                    
+        div#chatEntries(style='width: 500px; height: 300px; margin: 0 0 20px 0; border: solid 1px #999; overflow-y: scroll;')
+        .controls
+           // input.field(id='field', style='width:350px;')
+            //input.send(id='send', type='button', value='send')
+            input(id='disable', type='button', value='disable')

@@ -1,0 +1,26 @@
+extends layoutdesktop
+
+block menu
+  div.navbar.navbar-inverse.navbar-static-top
+    div.navbar-inner
+      div.container
+        a.brand(href='#') Webinterface
+        div.nav-collapse.collapse
+          ul.nav
+            li.active: a(href="#") Home
+            li: a(href='#config') Einstellungen
+
+block content
+  div.container
+    div.row-fluid
+      div.span5
+        ul.nav.nav-tabs
+          obj = {'tabVortrag': 'Vortragsraum', 'tabLounge': 'Lounge', 'tabBastel': 'Bastelraum', 'tabKueche': 'Küche', 'tabKeller': 'Keller'}
+          each val, key in obj
+            li.active: a(href='##{key}:', data-toggle='tab') #{val}
+        div.tab-content
+          div#tabVortrag.tab-pane.active
+
+block footer
+  div.footer
+    p by dr4go
