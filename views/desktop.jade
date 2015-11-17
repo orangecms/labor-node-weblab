@@ -45,9 +45,9 @@ block content
                                     div.col-md-4.col-sm-4.col-xs-4 #{subchannel.name}
                                     div.col-md-6.col-sm-6.col-xs-5
                                       if 'max' in subchannel
-                                        div(id='#{subchannel.id}').nvSlider.lockable(style='margin: 15px; width: 250px;', data-slider-max='#{subchannel.max}')
+                                        div(id='#{subchannel.id}', style='margin: 15px; width: 250px;', data-slider-max='#{subchannel.max}').nvSlider.lockable
                                       else
-                                        div(id='#{subchannel.id}').nvSlider.lockable(style='margin: 15px; width: 250px;')
+                                        div(id='#{subchannel.id}', style='margin: 15px; width: 250px;').nvSlider.lockable
                             div.col-lg-1.col-md-1.col-sm-1.col-xs-1
                               button.btn.lock.btn-default(id='#{channel.id}', style='height:100%;margin: 10px;padding:160px 10px;text-align:center', type='button', aria-pressed='true' data-toggle='button')
                                 span.glyphicon.glyphicon-link
@@ -57,18 +57,18 @@ block content
                         else
                           each subchannel in channel.subchannels
                             if subchannel.type == "swt"
-                              button(id='#{subchannel.id}').btn.nvButton.btn-danger(type='button', data-toggle='button') Aus
+                              button(id='#{subchannel.id}', type='button', data-toggle='button').btn.nvButton.btn-danger Aus
                             if subchannel.type == "sld"
                               if 'max' in subchannel
-                                div(id='#{subchannel.id}').nvSlider(style='margin: 15px; width: 250px;', data-slider-max='#{subchannel.max}')
+                                div(id='#{subchannel.id}', style='margin: 15px; width: 250px;', data-slider-max='#{subchannel.max}').nvSlider
                               else
-                                div(id='#{subchannel.id}').nvSlider(style='margin: 15px; width: 250px;')
+                                div(id='#{subchannel.id}', style='margin: 15px; width: 250px;').nvSlider
                             if subchannel.type == "btn"
                               if 'image' in subchannel
                                 button(id='#{subchannel.id}').btn.btn-lg
                                   span(class='glyphicon #{subchannel.image}')
                               else
-                                div(id='#{subchannel.id}').btn.nvButton.btn-info(type='button' style='margin: 5px;') #{subchannel.name}
+                                div(id='#{subchannel.id}', type='button', style='margin: 5px;').btn.nvButton.btn-info #{subchannel.name}
                             if subchannel.type == "graph"
                               div(id='#{subchannel.id}').graph-container
                               div(id='#{subchannel.id}axis0').left-section
