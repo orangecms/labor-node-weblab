@@ -25,19 +25,17 @@ socket.on('UpdateGUI', function(data) {
 				break;
 			case 'sl':
 				$("#" + subchannel.dev).slider('setValue', subchannel.val);
-				if($("#" + subchannel.dev).hasClass('lockable')) {
+				if ($("#" + subchannel.dev).hasClass('lockable')) {
 					$("#" + subchannel.dev).data('last-slide', subchannel.val);
 				}
 				break;
 			case 'graph':
 				console.log("graph" + subchannel.val);
-				for(var j in graphdata)
-				{
+				for (var j in graphdata) {
 					var graphitem = graphdata[j];
-					if(graphitem.id == subchannel.dev)
-					{
+					if (graphitem.id == subchannel.dev) {
 						graphitem.data.push(subchannel.val);
-						if(graphitem.data.length > 256)
+						if (graphitem.data.length > 256)
 							graphitem.data.pop();
 					}
 				}
@@ -50,20 +48,18 @@ socket.on('UpdateGUI', function(data) {
 
 $(document).ready(function() {
 	$('.btn').click(function(ev) {
-		var target      = ev.currentTarget,
-			buttonId    = $(target).attr('id'),
+		var target = ev.currentTarget,
+			buttonId = $(target).attr('id'),
 			buttonValue;
-		if($(target).hasClass('lock')) return;
-                if($(target).hasClass('nvButton')){
+		if ($(target).hasClass('lock')) return;
+                if ($(target).hasClass('nvButton')) {
 			if ($(target).hasClass('active')) { //if active turn off
 				buttonValue = 0;
 			}
-			else
-			{
+			else {
 				buttonValue = 1;
 			}
 		}
-
 		socket.emit('SetValue', {'fkt': 'sw', 'dev': buttonId, 'val': buttonValue});
 	});
 
@@ -85,10 +81,10 @@ $(document).ready(function() {
 				diff += currentDiff;
 				packet = {'fkt': 'lock', 'dev': $(ev.currentTarget).attr('id'), 'val': 0};
 				$(ev.currentTarget).parent().parent().parent().siblings().find('.lockable').each(function() {
-					$(this).slider('setValue', $(this).data('slider').value[0]+currentDiff);
+					$(this).slider('setValue', $(this).data('slider').value[0] + currentDiff);
 				}).data('last-slide', ev.value);
 			}
-		} else if(currentDiff != 0) {
+		} else if (currentDiff != 0) {
 			packet = {'fkt': 'sl', 'dev': $(ev.currentTarget).attr('id'), 'val': ev.value};
 		}
 		$(ev.currentTarget).data('last-slide', ev.value);
@@ -106,7 +102,7 @@ $(document).ready(function() {
 	});
 
 	$('.lock').on('click', function() {
-		if($(this).hasClass('active')) {
+		if ($(this).hasClass('active')) {
 			$(this).parent().siblings().find('.lockable').removeClass('locked');
 		} else {
 			$(this).parent().siblings().find('.lockable').addClass('locked');
@@ -121,7 +117,7 @@ $(document).ready(function() {
 			  series: [
 				{
 				  color: 'steelblue',
-				  data: [{x:0,y:0}],
+				  data: [{x: 0, y: 0}],
 				  name: 'Series A',
 				  scale: scales
 				}
@@ -147,11 +143,11 @@ $(document).ready(function() {
 		graph.render();
 
 		var graphitem = {
-			'data':[],
+			'data': [],
 			'id': this.id,
 			'graph': graph,
 			'graphaxisY': graphaxisY,
-			'graphaxisTime':graphaxisTime,
+			'graphaxisTime': graphaxisTime,
 			'graphHoverDetail': graphHoverDetail,
 			 };
 
@@ -169,7 +165,7 @@ function updategraph() {
 		for (var j in graphdata) {
 			var graphitem = graphdata[j];
 			if (graphitem.id == this.id) {
-				for(var z in graphitem.data) {
+				for (var z in graphitem.data) {
 					data.push({x: parseInt(z), y: graphitem.data[z]});
 				}
 				graphitem.graph.series[0].data = data;
