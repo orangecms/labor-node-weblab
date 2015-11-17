@@ -71,10 +71,10 @@ $(document).ready(function() {
 	})
 	.each(function() {
 		if ($(this).hasClass('lockable')) {
-			$(this).data('last-slide', $(this).data('slider').value[0]);
+			//$(this).data('last-slide', $(this).data('slider').value[0]);
 		}
 	})
-	.on('slide', function(ev, ui) {
+	.on('slide', function(ev) {
 		var currentDiff = ev.value - $(ev.currentTarget).data('last-slide');
 		if ($(ev.currentTarget).hasClass('locked')) {
 			if (currentDiff != 0) {
