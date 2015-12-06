@@ -6,6 +6,7 @@
                 {
                     "lapaddr": 2,
                     "name": "Powercommander",
+                    "id": "vortrag_powercommander",
                     "channels": [
                             {
                                 "name": "Couch",
@@ -53,6 +54,7 @@
                 {
                     "lapaddr": 16,
                     "name": "Beamer",
+                    "id": "vortrag_beamer",
                     "channels": [
                             {
                                 "name": "Beamer Steuerung",
@@ -71,6 +73,7 @@
                 {
                     "lapaddr": 16,
                     "name": "Audiomatrix",
+                    "id": "vortrag_audiomatrix",
                     "channels" : [
                         {
                             "name": "Eingang für Teufel Verstärker",
@@ -81,9 +84,10 @@
                         }
                     ]
                 },
-        {
+                {
                     "lapaddr": 16,
                     "name": "Teufel",
+                    "id": "vortrag_teufel",
                     "channels": [
                             {
                                 "name": "Teufel Verstärker (v2.0)",
@@ -106,6 +110,7 @@
                 {
                     "lapaddr": 37,
                     "name": "Treppenblink",
+                    "id": "vortrag_treppenblink",
                     "channels": [
                             {
                                 "name": "Aus",
@@ -120,8 +125,9 @@
                 {
                     "lapaddr": -1,
                     "name": "Musik",
-            "host": "10.0.1.6",
-            "port": 6602,
+                    "id": "vortrag_musik",
+                    "host": "10.0.1.6",
+                    "port": 6602,
                     "channels": [
                             {
                                 "name": "Title",
@@ -155,6 +161,7 @@
                 {
                     "lapaddr": 96,
                     "name": "Labnode Tür",
+                    "id": "lounge_labnode_tuer",
                     "channels": [
                             {
                                 "name": "Spot 1",
@@ -196,6 +203,7 @@
                 {
                     "lapaddr": 97,
                     "name": "Labnode Wand",
+                    "id": "lounge_labnode_wand",
                     "channels": [
                             {
                                 "name": "Spot 1",
@@ -237,11 +245,12 @@
         {
                     "lapaddr": -1,
                     "name": "Musik",
+                    "id": "lounge_musik",
                     "host": "10.0.1.6",
                     "port": 6601,
                     "channels": [
                 {
-                                "name": "Title",
+                            "name": "Title",
                             "subchannels": [
                                     {"type": "text"}
                                     ]
@@ -273,6 +282,7 @@
                 {
                     "lapaddr": 169,
                     "name": "Bastelcmd",
+                    "id": "bastel_bastelcmd",
                     "channels": [
                             {
                                 "name": "Basteltische Mitte #1",
@@ -324,6 +334,7 @@
         {
                     "lapaddr": -1,
                     "name": "Musik",
+                    "id": "bastel_musik",
                     "host": "10.0.1.6",
                     "port": 6600,
                     "channels": [
@@ -359,6 +370,7 @@
                 {
                     "lapaddr": 35,
                     "name": "KüchenCAN",
+                    "id": "kueche_kuechecan",
                     "channels": [
                             {
                                 "name": "Temperature",
@@ -371,6 +383,7 @@
                 {
                     "lapaddr": 2,
                     "name": "Powercommander",
+                    "id": "kueche_powercommander",
                     "channels": [
                             {
                                 "name": "Küche",
@@ -389,6 +402,7 @@
                 {
                     "lapaddr": 19,
                     "name": "KellerLabnode",
+                    "id": "keller_kellerlabnode",
                     "channels": [
                             {
                                 "name": "Neon",
@@ -407,6 +421,7 @@
         {
                     "lapaddr": -1,
                     "name": "Musik",
+                    "id": "keller_musik",
                     "host": "10.0.1.6",
                     "port": 6603,
                     "channels": [
@@ -442,6 +457,7 @@
                 {
                     "lapaddr": 4,
                     "name": "Klingel Test",
+                    "id": "keller_sonstiges",
                     "channels": [
                             {
                                 "name": "Klingel",

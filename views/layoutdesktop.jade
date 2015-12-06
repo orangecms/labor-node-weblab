@@ -7,6 +7,7 @@ html(lang="de")
     link(type='text/css', href='css/bootstrap-theme.min.css', rel='stylesheet')
     link(type='text/css', href='css/slider.css', rel='stylesheet')
     link(type='text/css', href='css/rickshaw.min.css', rel='stylesheet')
+    link(type='text/css', href='css/custom.css', rel='stylesheet')
     //link(type='text/css', href='css/Rickshaw/graph.css', rel='stylesheet')
 
     script(type='text/javascript', src='/socket.io/socket.io.js')
@@ -21,3 +22,7 @@ html(lang="de")
     block content
     block settings
     block footer
+  script(type='text/javascript')
+    jQuery(document).ready(function($)) {
+      $('#tabs').tab();
+    });

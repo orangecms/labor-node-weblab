@@ -9,6 +9,7 @@
     "method-override": "~1",
     "jade": "latest",
     "mpd": "latest"
+    "bootstrap-slider": "latest"
   },
   "author": "developer",
   "scripts": {

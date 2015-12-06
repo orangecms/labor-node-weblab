@@ -2,7 +2,7 @@ extends layoutdesktop
 script(src="/socket.io/socket.io.js")
 
 block menu
-  div.navbar.navbar-inverse.navbar-static-top
+  div.navbar.navbar-inverse.navbar-fixed-top
     div.container
       div.navbar-header
         button.navbar-toggle(type='button', data-toggle='collapse', data-target='.navbar-collapse')
@@ -10,73 +10,81 @@ block menu
           span.icon-bar
           span.icon-bar
           span.icon-bar
-        a.navbar-brand(href='#') #{pagetitle}
-      div.collapse.navbar-collapse
-        ul.nav.navbar-nav
-          li.active: a(href="#") Home
-          li: a(href='#config', data-toggle='modal') Einstellungen
-
-block content
-  div.container
-    div.row
-      div.col-md-6
-        ul.nav.nav-tabs
+        a.navbar-brand WebLab
+      div.navbar-collapse.collapse
+        ul.nav.navbar-nav(data-tabs='tabs', id='tabs')
           each room, i in rooms
             if i === 0
               li.active: a(href='#tab#{room.name}', data-toggle='tab') #{room.name}
             else
               li: a(href='#tab#{room.name}', data-toggle='tab') #{room.name}
-        div.tab-content
+          li: a(href='#config', data-toggle='modal') Einstellungen
+
+
+block content
+  div.container
+    div.row
+      div.col-md-12
+        div.tab-content.main-content
           each room, i in rooms
-            div(id='tab#{room.name}', class='#{i===0 ? "tab-pane active" : "tab-pane"}')
-              each device in room.devices
-                div
-                  h4 #{device.name}
-                  each channel in device.channels
-                    div
-                      h5 #{channel.name}
-                      div.well
-                        if channel.type == "lockedsliders"
-                          div.row
-                            div.col-lg-9.col-md-10.col-sm-7.col-xs-10
-                              each subchannel in channel.subchannels
-                                if subchannel.type == "sld"
-                                  div.row(style='margin: 20px 0;')
-                                    div.col-md-4.col-sm-4.col-xs-4 #{subchannel.name}
-                                    div.col-md-6.col-sm-6.col-xs-5
-                                      if 'max' in subchannel
-                                        div(id='#{subchannel.id}', style='margin: 15px; width: 250px;', data-slider-max='#{subchannel.max}').nvSlider.lockable
-                                      else
-                                        div(id='#{subchannel.id}', style='margin: 15px; width: 250px;').nvSlider.lockable
-                            div.col-lg-1.col-md-1.col-sm-1.col-xs-1
-                              button.btn.lock.btn-default(id='#{channel.id}', style='height:100%;margin: 10px;padding:160px 10px;text-align:center', type='button', aria-pressed='true' data-toggle='button')
-                                span.glyphicon.glyphicon-link
-                          each subchannel in channel.subchannels
-                            if subchannel.type == "btn"
-                              button.btn.nvButton.btn-danger(id='#{subchannel.id}', type='button', data-toggle='button') #{subchannel.name}
-                        else
-                          each subchannel in channel.subchannels
-                            if subchannel.type == "swt"
-                              button(id='#{subchannel.id}', type='button', data-toggle='button').btn.nvButton.btn-danger Aus
-                            if subchannel.type == "sld"
-                              if 'max' in subchannel
-                                div(id='#{subchannel.id}', style='margin: 15px; width: 250px;', data-slider-max='#{subchannel.max}').nvSlider
-                              else
-                                div(id='#{subchannel.id}', style='margin: 15px; width: 250px;').nvSlider
-                            if subchannel.type == "btn"
-                              if 'image' in subchannel
-                                button(id='#{subchannel.id}').btn.btn-lg
-                                  span(class='glyphicon #{subchannel.image}')
-                              else
-                                div(id='#{subchannel.id}', type='button', style='margin: 5px;').btn.nvButton.btn-info #{subchannel.name}
-                            if subchannel.type == "graph"
-                              div(id='#{subchannel.id}').graph-container
-                              div(id='#{subchannel.id}axis0').left-section
-                              div(id='#{subchannel.id}chart').right-section
-                            if subchannel.typw == "text"
-                              div(id='#{subchannel.id}')
-      div.col-md-6
-        button(onclick='show()') test desktop notification
+            div(class='#{i===0 ? "tab-pane active" : "tab-pane"}', id='tab#{room.name}')
+              div.row
+                each device in room.devices
+                  div.col-md-6
+                    div.panel-group(id='accordion')
+                      div.panel.panel-default
+                          div.panel-heading
+                            h4.panel-title
+                              a(data-toggle='collapse', href='#col#{device.id}', data-parent='#accordion') #{device.name}
+                          div.panel-collapse.collapse(id='col#{device.id}')
+                            ul.list-group
+                              li.list-group-item
+                                each channel in device.channels
+                                  div.row(style='margin: 2.5px;')
+                                    //- Teufel-Sliders
+                                    if channel.type == "lockedsliders"
+                                        div.col-lg-10.col-md-10.col-sm-10.col-xs-10
+                                          each subchannel in channel.subchannels
+                                            p
+                                              if subchannel.type == "sld"
+                                                div.row
+                                                  div.col-md-4.col-sm-4.col-xs-4 #{subchannel.name}
+                                                  div.col-md-8.col-sm-8.col-xs-8
+                                                    if 'max' in subchannel
+                                                      div(id='#{subchannel.id}', style='margin: 15px; width: 230px;', data-slider-max='#{subchannel.max}').nvSlider.lockable
+                                                    else
+                                                      div(id='#{subchannel.id}', style='margin: 15px; width: 230px;').nvSlider.lockable
+
+                                        div.col-lg-2.col-md-2.col-sm-2.col-xs-2
+                                          button.btn.lock.btn-default.btn-subchannels(id='#{channel.id}', type='button', aria-pressed='true' data-toggle='button')
+                                            span.glyphicon.glyphicon-link
+                                        each subchannel in channel.subchannels
+                                          if subchannel.type == "btn"
+                                            button.btn.nvButton.btn-danger(id='#{subchannel.id}', type='button', data-toggle='button') Mute
+                                    else
+                                        each subchannel in channel.subchannels
+                                          //- u.a. Powermanager
+                                          if subchannel.type == "swt"
+                                            div.col-md-5.col-sm-5.col-xs-5
+                                              button.btn.nvButton.btn-danger(id='#{subchannel.id}', type='button', data-toggle='button') #{channel.name} (Aus)
+                                          if subchannel.type == "sld"
+                                            div.col-md-7.col-sm-7.col-xs-7
+                                              if 'max' in subchannel
+                                                div(id='#{subchannel.id}', data-slider-max='#{subchannel.max}', style='margin: 15px; width: 230px;').nvSlider.pull-right
+                                              else
+                                                div.nvSlider(id='#{subchannel.id}', style='margin: 15px; width: 230px;')
+                                          if subchannel.type == "btn"
+                                            if 'image' in subchannel
+                                              button(id='#{subchannel.id}').btn.btn-lg
+                                                span(class='glyphicon #{subchannel.image}')
+                                            else
+                                              div(id='#{subchannel.id}', type='button').btn.nvButton.btn-info #{subchannel.name}
+                                          if subchannel.type == "graph"
+                                            div(id='#{subchannel.id}').graph-container
+                                            div(id='#{subchannel.id}axis0').left-section
+                                            div(id='#{subchannel.id}chart').right-section
+                                          if subchannel.typw == "text"
+                                            div(id='#{subchannel.id}')
 
 block settings
   div.modal.fade#config(tabindex='-1', role='dialog', aria-labelledby='myModalLabel', aria-hidden='true')
@@ -88,10 +96,9 @@ block settings
         div.modal-body
           p Benachrichtigungen &uuml;ber: Türen, Bewegungsmelder, Licht, Klingel
           p: button(onclick='authorize()') Autorisierung für Benachrichtigungen anfordern.
+          p: button(onclick='show()') Benachrichtigungen testen
         div.modal-footer
+          div.pull-left
+            b node-weblab by dr4go, siro, e7p, d2ns
           button.btn.btn-default(type='button',data-dismiss='modal') Close
           button.btn.btn-primary(type='button') Save changes
-
-block footer
-  div.footer
-    p by dr4go, siro, e7p
