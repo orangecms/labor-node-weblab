@@ -8,7 +8,7 @@
     "compression": "~1",
     "method-override": "~1",
     "jade": "latest",
-    "mpd": "latest"
+    "mpd": "latest",
     "bootstrap-slider": "latest"
   },
   "author": "developer",
