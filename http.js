@@ -30,6 +30,6 @@ app.get('/mobile', function(req, res) {
 			     });
 });
 
-server.listen(conf.global.httpport, '::');
+server.listen(conf.global.http.port, conf.global.http.hostname);
 
 exports.server = server;
