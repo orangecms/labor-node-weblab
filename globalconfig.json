@@ -5,6 +5,6 @@
     },
     "canconfig": {
            "port": 2342,
-           "hostname": "localhost"
+           "hostname": "wl"
     }
 }
