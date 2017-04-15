@@ -1,7 +1,7 @@
 {
-    "httpport": 80,
+    "httpport": 8880,
     "canconfig": {
            "port": 2342,
-           "hostname": "localhost"
+           "hostname": "10.0.1.4"
     }
 }
