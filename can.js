@@ -58,8 +58,16 @@ function ProcessCANPacket(packet) {
       var rx_packet = new CANPacket();
       rx_packet.destination_addr = packet[2];
       rx_packet.source_addr = packet[3];
-      rx_packet.destination_port = ((packet[4] & 0x60) >> 1) + (packet[4] & 0x0f);
-      rx_packet.source_port = ((packet[5] & 0x1f) << 1) + ((packet[4] & 0x80) >> 7);
+      rx_packet.destination_port = (
+        (packet[4] & 0x60) >> 1
+      ) + (
+        packet[4] & 0x0f
+      );
+      rx_packet.source_port = (
+        (packet[5] & 0x1f) << 1
+      ) + (
+        (packet[4] & 0x80) >> 7
+      );
       rx_packet.dlc = packet[6];
       for (var i = 0; i < rx_packet.dlc; i++) {
         rx_packet.data[i] = packet[7 + i];
@@ -91,7 +99,13 @@ var CANPacket = function() {
     buffer[1] = 0x11; // tcp packet
     buffer[2] = this.destination_addr;
     buffer[3] = this.source_addr;
-    buffer[4] = (this.destination_port & 0xf) | ((this.destination_port & 0x30) << 1) | ((this.source_port & 1) << 7);
+    buffer[4] = (
+      this.destination_port & 0xf
+    ) | (
+      (this.destination_port & 0x30) << 1
+    ) | (
+      (this.source_port & 1) << 7
+    );
     buffer[5] = (this.source_port & 0x3e) >> 1;
     buffer[6] = this.dlc;
     for (var i = 0; i < this.dlc; i++) {
