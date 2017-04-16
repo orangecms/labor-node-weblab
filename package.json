@@ -12,7 +12,8 @@
   },
   "author": "developer",
   "scripts": {
-    "start": "node app.js"
+    "start": "node app.js",
+    "test": "jasmine"
   },
   "devDependencies": {
     "jasmine": "^2.4.1",
