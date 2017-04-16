@@ -4,24 +4,27 @@ var can_client;
 var rawdata = new Buffer(0);
 var bytesRead = 0;
 
+const { hostname, port } = conf.global.canconfig;
+
 var EventEmitter = require('events').EventEmitter;
 
 module.exports = new EventEmitter();
 
+//'connect' listener
+const onConnect = function() {
+  console.log(`cand client connected to ${hostname}:${port}`);
+  module.exports.emit('connected');
+};
+
 var connect = function () {
-  can_client = net.connect(conf.global.canconfig.port, conf.global.canconfig.hostname, function() { //'connect' listener
-    console.log('cand client connected to ' + conf.global.canconfig.hostname + ':' + conf.global.canconfig.port);
-    module.exports.emit('connected');
-  });
+  can_client = net.connect(port, hostname, onConnect);
 };
 
 connect();
 
-can_client.on('error', function(error) {
-  console.log('error: cand connection not possible');
-  console.log('could not connect to ' + conf.global.canconfig.hostname + ':' + conf.global.canconfig.port);
+const reconnect = () => {
   timeoutid = setTimeout(connect, 2000);
-});
+};
 
 can_client.on('data', function(data) {
   var len;
@@ -38,9 +41,15 @@ can_client.on('data', function(data) {
   }
 });
 
+can_client.on('error', function(error) {
+  console.log('error: cand connection not possible');
+  console.log(`could not connect to ${hostname}:${port}`);
+  reconnect();
+});
+
 can_client.on('end', function() {
   console.log('can client disconnected');
-  timeoutid = setTimeout(connect, 2000);
+  reconnect();
 });
 
 function ProcessCANPacket(packet) {
