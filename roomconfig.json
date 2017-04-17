@@ -1,457 +1,1072 @@
 {
-    "room": [
+  "room": [
+    {
+      "name": "Vortragsraum",
+      "devices": [
         {
-            "name": "Vortragsraum",
-            "devices": [
+          "lapaddr": 2,
+          "name": "Powercommander",
+          "channels": [
+            {
+              "name": "Couch",
+              "subchannels": [
                 {
-                    "lapaddr": 2,
-                    "name": "Powercommander",
-                    "channels": [
-                            {
-                                "name": "Couch",
-                                "subchannels": [
-                                    {"type":"swt","port":2,"data0":0,"data1":3,"action":2,"response_srcport":2,"response_bit":3},
-                                    {"type":"sld","port":2,"data0":1,"data1":3,"action":2,"response_srcport":2,"response_byte":5}
-                                    ]
-                            },
-                            {
-                                "name": "Schrank",
-                                "subchannels": [
-                                    {"type":"swt","port":2,"data0":0,"data1":2,"action":2,"response_srcport":2,"response_bit":2},
-                                    {"type":"sld","port":2,"data0":1,"data1":2,"action":2,"response_srcport":2,"response_byte":4}
-                                    ]
-                            },
-                            {
-                                "name": "Beamer",
-                                "subchannels": [
-                                    {"type":"swt","port":2,"data0":0,"data1":1,"action":2,"response_srcport":2,"response_bit":1},
-                                    {"type":"sld","port":2,"data0":1,"data1":1,"action":2,"response_srcport":2,"response_byte":3}
-                                    ]
-                            },
-                            {
-                                "name": "Tafel",
-                                "subchannels": [
-                                    {"type":"swt","port":2,"data0":0,"data1":0,"action":2,"response_srcport":2,"response_bit":0},
-                                    {"type":"sld","port":2,"data0":1,"data1":0,"action":2,"response_srcport":2,"response_byte":2}
-                                    ]
-                            },
-                            {
-                                "name": "Alle",
-                                "subchannels": [
-                                    {"type":"swt","port":2,"data0":3,"data1":2,"action":2,"response_srcport":2,"response_byte":0,"response_mask":15, "response_result":15},
-                                    {"type":"sld","port":2,"data0":4,"data1":2,"action":2}
-                                    ]
-                            },
-                            {
-                                "name": "Beamer",
-                                "subchannels": [
-                                    {"type":"swt","port":2,"data0":0,"data1":4,"action":2,"response_srcport":2,"response_bit":9}
-                                    ]
-                            }
-                        ]
+                  "type": "swt",
+                  "port": 2,
+                  "data0": 0,
+                  "data1": 3,
+                  "action": 2,
+                  "response_srcport": 2,
+                  "response_bit": 3
                 },
                 {
-                    "lapaddr": 16,
-                    "name": "Beamer",
-                    "channels": [
-                            {
-                                "name": "Beamer Steuerung",
-                                "subchannels": [
-                                   {"type":"btn","port":33,"data0":1,"data1":0,"name":"ON/OFF","response_srcport":5,"response_bit":0},
-                                   {"type":"btn","port":33,"data0":1,"data1":1,"name":"Source"},
-                                   {"type":"btn","port":33,"data0":1,"data1":2,"name":"VGA"},
-                                   {"type":"btn","port":33,"data0":1,"data1":3,"name":"S-Video"},
-                                   {"type":"btn","port":33,"data0":1,"data1":4,"name":"Composite"},
-                                   {"type":"btn","port":33,"data0":1,"data1":5,"name":"HDMI"},
-                                   {"type":"btn","port":33,"data0":1,"data1":6,"name":"Blank"}
-                                    ]
-                            }
-                        ]
-                },
-                {
-                    "lapaddr": 16,
-                    "name": "Audiomatrix",
-                    "channels" : [
-                        {
-                            "name": "Eingang für Teufel Verstärker",
-                            "subchannels": [
-                                {"type":"btn","port":33,"data0":10,"data1":0,"name":"MPD"},
-                                {"type":"btn","port":33,"data0":10,"data1":1,"name":"Klinke"}
-                            ]
-                        }
-                    ]
-                },
-        {
-                    "lapaddr": 16,
-                    "name": "Teufel",
-                    "channels": [
-                            {
-                                "name": "Teufel Verstärker (v2.0)",
-                                "type": "lockedsliders",
-                                "id": "1",
-                                "subchannels": [
-                                   {"type":"sld","port":33,"data0":4,"data1":5,"action":2,"response_srcport":6,"response_byte":5,"max":79,"name":"Front Left"},
-                                   {"type":"sld","port":33,"data0":4,"data1":4,"action":2,"response_srcport":6,"response_byte":4,"max":79,"name":"Front Right"},
-                                   {"type":"sld","port":33,"data0":4,"data1":6,"action":2,"response_srcport":6,"response_byte":6,"max":79,"name":"Side Left"},
-                                   {"type":"sld","port":33,"data0":4,"data1":7,"action":2,"response_srcport":6,"response_byte":7,"max":79,"name":"Side Right"},
-                                   {"type":"sld","port":33,"data0":4,"data1":2,"action":2,"response_srcport":6,"response_byte":2,"max":79,"name":"Rear Left"},
-                                   {"type":"sld","port":33,"data0":4,"data1":0,"action":2,"response_srcport":6,"response_byte":0,"max":79,"name":"Rear Right"},
-                                   {"type":"sld","port":33,"data0":4,"data1":1,"action":2,"response_srcport":6,"response_byte":1,"max":79,"name":"Sub"},
-                                   {"type":"sld","port":33,"data0":4,"data1":3,"action":2,"response_srcport":6,"response_byte":3,"max":79,"name":"Center"},
-                                   {"type":"btn","port":33,"data0":6,"action":1,"name":"Mute"}
-                                ]
-                            }
-                        ]
-                },
-                {
-                    "lapaddr": 37,
-                    "name": "Treppenblink",
-                    "channels": [
-                            {
-                                "name": "Aus",
-                                "subchannels": [
-                                    {"type":"btn","port":15,"data0":4,"name":"Aus"},
-                                    {"type":"btn","port":15,"data0":2,"name":"Weiss"},
-                                    {"type":"btn","port":15,"data0":8,"name":"RGB"}
-                                ]
-                            }
-                        ]
-                },
-                {
-                    "lapaddr": -1,
-                    "name": "Musik",
-            "host": "10.0.1.6",
-            "port": 6602,
-                    "channels": [
-                            {
-                                "name": "Title",
-                                "subchannels": [
-                                    {"type": "text"}
-                                    ]
-                            },
-                            {
-                                "name": "Control",
-                                "subchannels": [
-                                    {"type":"btn","action":"previous","image":"glyphicon-step-backward"},
-                                    {"type":"btn","action":"stop","image":"glyphicon-stop"},
-                                    {"type":"btn","action":"play","image":"glyphicon-play"},    
-                                    {"type":"btn","action":"pause","image":"glyphicon-pause"},
-                                    {"type":"btn","action":"next","image":"glyphicon-step-forward"}
-                                ]
-                            },
-                            {
-                                "name": "Volume",
-                                "subchannels": [
-                                    {"type": "sld", "action": "setvol"}
-                                    ]
-                            }
-                        ]
+                  "type": "sld",
+                  "port": 2,
+                  "data0": 1,
+                  "data1": 3,
+                  "action": 2,
+                  "response_srcport": 2,
+                  "response_byte": 5
                 }
-            ]
+              ]
+            },
+            {
+              "name": "Schrank",
+              "subchannels": [
+                {
+                  "type": "swt",
+                  "port": 2,
+                  "data0": 0,
+                  "data1": 2,
+                  "action": 2,
+                  "response_srcport": 2,
+                  "response_bit": 2
+                },
+                {
+                  "type": "sld",
+                  "port": 2,
+                  "data0": 1,
+                  "data1": 2,
+                  "action": 2,
+                  "response_srcport": 2,
+                  "response_byte": 4
+                }
+              ]
+            },
+            {
+              "name": "Beamer",
+              "subchannels": [
+                {
+                  "type": "swt",
+                  "port": 2,
+                  "data0": 0,
+                  "data1": 1,
+                  "action": 2,
+                  "response_srcport": 2,
+                  "response_bit": 1
+                },
+                {
+                  "type": "sld",
+                  "port": 2,
+                  "data0": 1,
+                  "data1": 1,
+                  "action": 2,
+                  "response_srcport": 2,
+                  "response_byte": 3
+                }
+              ]
+            },
+            {
+              "name": "Tafel",
+              "subchannels": [
+                {
+                  "type": "swt",
+                  "port": 2,
+                  "data0": 0,
+                  "data1": 0,
+                  "action": 2,
+                  "response_srcport": 2,
+                  "response_bit": 0
+                },
+                {
+                  "type": "sld",
+                  "port": 2,
+                  "data0": 1,
+                  "data1": 0,
+                  "action": 2,
+                  "response_srcport": 2,
+                  "response_byte": 2
+                }
+              ]
+            },
+            {
+              "name": "Alle",
+              "subchannels": [
+                {
+                  "type": "swt",
+                  "port": 2,
+                  "data0": 3,
+                  "data1": 2,
+                  "action": 2,
+                  "response_srcport": 2,
+                  "response_byte": 0,
+                  "response_mask": 15,
+                  "response_result": 15
+                },
+                {
+                  "type": "sld",
+                  "port": 2,
+                  "data0": 4,
+                  "data1": 2,
+                  "action": 2
+                }
+              ]
+            },
+            {
+              "name": "Beamer",
+              "subchannels": [
+                {
+                  "type": "swt",
+                  "port": 2,
+                  "data0": 0,
+                  "data1": 4,
+                  "action": 2,
+                  "response_srcport": 2,
+                  "response_bit": 9
+                }
+              ]
+            }
+          ]
         },
         {
-            "name": "Lounge",
-            "devices": [
+          "lapaddr": 16,
+          "name": "Beamer",
+          "channels": [
+            {
+              "name": "Beamer Steuerung",
+              "subchannels": [
                 {
-                    "lapaddr": 96,
-                    "name": "Labnode Tür",
-                    "channels": [
-                            {
-                                "name": "Spot 1",
-                                "subchannels": [
-                                    {"type":"swt","port":2,"data0":0,"data1":0,"action":2,"response_srcport":3,"response_bit":0},
-                                    {"type":"sld","port":2,"data0":1,"data1":0,"action":2,"response_srcport":3,"response_byte":1}
-                                    ]
-                            },
-                            {
-                                "name": "Spot 2",
-                                "subchannels": [
-                                    {"type":"swt","port":2,"data0":0,"data1":1,"action":2,"response_srcport":3,"response_bit":1},
-                                    {"type":"sld","port":2,"data0":1,"data1":1,"action":2,"response_srcport":3,"response_byte":2}
-                                    ]
-                            },
-                            {
-                                "name": "Spot 3",
-                                "subchannels": [
-                                    {"type":"swt","port":2,"data0":0,"data1":2,"action":2,"response_srcport":3,"response_bit":2},
-                                    {"type":"sld","port":2,"data0":1,"data1":2,"action":2,"response_srcport":3,"response_byte":3}
-                                    ]
-                            },
-                            {
-                                "name": "Neon",
-                                "subchannels": [
-                                    {"type":"swt","port":2,"data0":0,"data1":3,"action":2,"response_srcport":3,"response_bit":3},
-                                    {"type":"sld","port":2,"data0":1,"data1":3,"action":2,"response_srcport":3,"response_byte":4}
-                                    ]
-                            },
-                            {
-                                "name": "Alle",
-                                "subchannels": [
-                                    {"type":"swt","port":2,"data0":3,"data1":0,"action":2},
-                                    {"type":"sld","port":2,"data0":4,"data1":0,"action":2}
-                                    ]
-                            }
-                        ]
+                  "type": "btn",
+                  "port": 33,
+                  "data0": 1,
+                  "data1": 0,
+                  "name": "ON/OFF",
+                  "response_srcport": 5,
+                  "response_bit": 0
                 },
                 {
-                    "lapaddr": 97,
-                    "name": "Labnode Wand",
-                    "channels": [
-                            {
-                                "name": "Spot 1",
-                                "subchannels": [
-                                    {"type":"swt","port":2,"data0":0,"data1":0,"action":2,"response_srcport":3,"response_bit":0},
-                                    {"type":"sld","port":2,"data0":1,"data1":0,"action":2,"response_srcport":3,"response_byte":1}
-                                    ]
-                            },
-                            {
-                                "name": "Spot 2",
-                                "subchannels": [
-                                    {"type":"swt","port":2,"data0":0,"data1":1,"action":2,"response_srcport":3,"response_bit":1},
-                                    {"type":"sld","port":2,"data0":1,"data1":1,"action":2,"response_srcport":3,"response_byte":2}
-                                    ]
-                            },
-                            {
-                                "name": "Spot 3",
-                                "subchannels": [
-                                    {"type":"swt","port":2,"data0":0,"data1":2,"action":2,"response_srcport":3,"response_bit":2},
-                                    {"type":"sld","port":2,"data0":1,"data1":2,"action":2,"response_srcport":3,"response_byte":3}
-                                    ]
-                            },
-                            {
-                                "name": "Neon",
-                                "subchannels": [
-                                    {"type":"swt","port":2,"data0":0,"data1":3,"action":2,"response_srcport":3,"response_bit":3},
-                                    {"type":"sld","port":2,"data0":1,"data1":3,"action":2,"response_srcport":3,"response_byte":4}
-                                    ]
-                            },
-                            {
-                                "name": "Alle",
-                                "subchannels": [
-                                    {"type":"swt","port":2,"data0":3,"data1":0,"action":2},
-                                    {"type":"sld","port":2,"data0":4,"data1":0,"action":2}
-                                    ]
-                            }
-                        ]
+                  "type": "btn",
+                  "port": 33,
+                  "data0": 1,
+                  "data1": 1,
+                  "name": "Source"
                 },
-        {
-                    "lapaddr": -1,
-                    "name": "Musik",
-                    "host": "10.0.1.6",
-                    "port": 6601,
-                    "channels": [
                 {
-                                "name": "Title",
-                            "subchannels": [
-                                    {"type": "text"}
-                                    ]
+                  "type": "btn",
+                  "port": 33,
+                  "data0": 1,
+                  "data1": 2,
+                  "name": "VGA"
                 },
-                            {
-                                "name": "Control",
-                                "subchannels": [
-                                    {"type":"btn","action":"previous","image":"glyphicon-step-backward"},
-                                    {"type":"btn","action":"stop","image":"glyphicon-stop"},
-                                    {"type":"btn","action":"play","image":"glyphicon-play"},
-                                    {"type":"btn","action":"pause","image":"glyphicon-pause"},
-                                    {"type":"btn","action":"next","image":"glyphicon-step-forward"}
-                                ]
-                            },
-                            {
-                                "name": "Volume",
-                                "subchannels": [
-                                    {"type": "sld", "action": "volume"}
-                                    ]
-                            }
-                        ]
+                {
+                  "type": "btn",
+                  "port": 33,
+                  "data0": 1,
+                  "data1": 3,
+                  "name": "S-Video"
+                },
+                {
+                  "type": "btn",
+                  "port": 33,
+                  "data0": 1,
+                  "data1": 4,
+                  "name": "Composite"
+                },
+                {
+                  "type": "btn",
+                  "port": 33,
+                  "data0": 1,
+                  "data1": 5,
+                  "name": "HDMI"
+                },
+                {
+                  "type": "btn",
+                  "port": 33,
+                  "data0": 1,
+                  "data1": 6,
+                  "name": "Blank"
                 }
-
-            ]
+              ]
+            }
+          ]
         },
         {
-            "name": "Bastelraum",
-            "devices": [
+          "lapaddr": 16,
+          "name": "Audiomatrix",
+          "channels": [
+            {
+              "name": "Eingang für Teufel Verstärker",
+              "subchannels": [
                 {
-                    "lapaddr": 169,
-                    "name": "Bastelcmd",
-                    "channels": [
-                            {
-                                "name": "Basteltische Mitte #1",
-                                "subchannels": [
-                                    {"type":"swt","port":1,"data0":0,"data1":1,"action":2,"response_srcport":3,"response_bit":1}
-                                    ]
-                            },
-                            {
-                                "name": "Basteltische Mitte #2",
-                                "subchannels": [
-                                    {"type":"swt","port":1,"data0":0,"data1":2,"action":2,"response_srcport":3,"response_bit":2}
-                                    ]
-                            },
-                            {
-                                "name": "Basteltische Fenster #1",
-                                "subchannels": [
-                                    {"type":"swt","port":1,"data0":0,"data1":3,"action":2,"response_srcport":3,"response_bit":3}
-                                    ]
-                            },
-                            {
-                                "name": "Basteltische Fenster #2",
-                                "subchannels": [
-                                    {"type":"swt","port":1,"data0":0,"data1":4,"action":2,"response_srcport":3,"response_bit":4}
-                                    ]
-                            },
-                            {
-                                "name": "Große Neon Fenster",
-                                "subchannels": [
-                                    {"type":"swt","port":1,"data0":0,"data1":5,"action":2,"response_srcport":3,"response_bit":5},
-                                    {"type":"sld","port":1,"data0":1,"data1":0,"action":2,"response_srcport":3,"response_byte":1}
-                                    ]
-                            },
-                            {
-                                "name": "Große Neon Mitte",
-                                "subchannels": [
-                                    {"type":"swt","port":1,"data0":0,"data1":6,"action":2,"response_srcport":3,"response_bit":6},
-                                    {"type":"sld","port":1,"data0":1,"data1":1,"action":2,"response_srcport":3,"response_byte":2}
-                                    ]
-                            },
-                            {
-                                "name": "Große Neon Drucker",
-                                "subchannels": [
-                                    {"type":"swt","port":1,"data0":0,"data1":7,"action":2,"response_srcport":3,"response_bit":7},
-                                    {"type":"sld","port":1,"data0":1,"data1":2,"action":2,"response_srcport":3,"response_byte":3}
-                                    ]
-                            }
-                        ]
+                  "type": "btn",
+                  "port": 33,
+                  "data0": 10,
+                  "data1": 0,
+                  "name": "MPD"
                 },
-        {
-                    "lapaddr": -1,
-                    "name": "Musik",
-                    "host": "10.0.1.6",
-                    "port": 6600,
-                    "channels": [
-                            {
-                                "name": "Title",
-                                "subchannels": [
-                                    {"type": "text"}
-                                    ]
-                            },
-                            {
-                                "name": "Control",
-                                "subchannels": [
-                                    {"type":"btn","action":"previous","image":"glyphicon-step-backward"},
-                                    {"type":"btn","action":"stop","image":"glyphicon-stop"},
-                                    {"type":"btn","action":"play","image":"glyphicon-play"},
-                                    {"type":"btn","action":"pause","image":"glyphicon-pause"},
-                                    {"type":"btn","action":"next","image":"glyphicon-step-forward"}
-                                ]
-                            },
-                            {
-                                "name": "Volume",
-                                "subchannels": [
-                                    {"type": "sld", "action": "volume"}
-                                    ]
-                            }
-                        ]
+                {
+                  "type": "btn",
+                  "port": 33,
+                  "data0": 10,
+                  "data1": 1,
+                  "name": "Klinke"
                 }
-            ]
+              ]
+            }
+          ]
         },
         {
-            "name": "Küche",
-            "devices": [
+          "lapaddr": 16,
+          "name": "Teufel",
+          "channels": [
+            {
+              "name": "Teufel Verstärker (v2.0)",
+              "type": "lockedsliders",
+              "id": "1",
+              "subchannels": [
                 {
-                    "lapaddr": 35,
-                    "name": "KüchenCAN",
-                    "channels": [
-                            {
-                                "name": "Temperature",
-                                "subchannels": [
-                                    {"type":"graph","multi":1,"response_srcport":15,"response_byte":0}
-                                    ]
-                            }
-                        ]
+                  "type": "sld",
+                  "port": 33,
+                  "data0": 4,
+                  "data1": 5,
+                  "action": 2,
+                  "response_srcport": 6,
+                  "response_byte": 5,
+                  "max": 79,
+                  "name": "Front Left"
                 },
                 {
-                    "lapaddr": 2,
-                    "name": "Powercommander",
-                    "channels": [
-                            {
-                                "name": "Küche",
-                                "subchannels": [
-                                    {"type":"swt","port":2,"data0":0,"data1":5,"action":2,"response_srcport":2,"response_bit":4},
-                                    {"type":"sld","port":2,"data0":1,"data1":5,"action":2,"response_srcport":2,"response_byte":6}
-                                    ]
-                            }
-                        ]
+                  "type": "sld",
+                  "port": 33,
+                  "data0": 4,
+                  "data1": 4,
+                  "action": 2,
+                  "response_srcport": 6,
+                  "response_byte": 4,
+                  "max": 79,
+                  "name": "Front Right"
+                },
+                {
+                  "type": "sld",
+                  "port": 33,
+                  "data0": 4,
+                  "data1": 6,
+                  "action": 2,
+                  "response_srcport": 6,
+                  "response_byte": 6,
+                  "max": 79,
+                  "name": "Side Left"
+                },
+                {
+                  "type": "sld",
+                  "port": 33,
+                  "data0": 4,
+                  "data1": 7,
+                  "action": 2,
+                  "response_srcport": 6,
+                  "response_byte": 7,
+                  "max": 79,
+                  "name": "Side Right"
+                },
+                {
+                  "type": "sld",
+                  "port": 33,
+                  "data0": 4,
+                  "data1": 2,
+                  "action": 2,
+                  "response_srcport": 6,
+                  "response_byte": 2,
+                  "max": 79,
+                  "name": "Rear Left"
+                },
+                {
+                  "type": "sld",
+                  "port": 33,
+                  "data0": 4,
+                  "data1": 0,
+                  "action": 2,
+                  "response_srcport": 6,
+                  "response_byte": 0,
+                  "max": 79,
+                  "name": "Rear Right"
+                },
+                {
+                  "type": "sld",
+                  "port": 33,
+                  "data0": 4,
+                  "data1": 1,
+                  "action": 2,
+                  "response_srcport": 6,
+                  "response_byte": 1,
+                  "max": 79,
+                  "name": "Sub"
+                },
+                {
+                  "type": "sld",
+                  "port": 33,
+                  "data0": 4,
+                  "data1": 3,
+                  "action": 2,
+                  "response_srcport": 6,
+                  "response_byte": 3,
+                  "max": 79,
+                  "name": "Center"
+                },
+                {
+                  "type": "btn",
+                  "port": 33,
+                  "data0": 6,
+                  "action": 1,
+                  "name": "Mute"
                 }
-            ]
+              ]
+            }
+          ]
         },
         {
-            "name": "Keller",
-            "devices": [
+          "lapaddr": 37,
+          "name": "Treppenblink",
+          "channels": [
+            {
+              "name": "Aus",
+              "subchannels": [
                 {
-                    "lapaddr": 19,
-                    "name": "KellerLabnode",
-                    "channels": [
-                            {
-                                "name": "Neon",
-                                "subchannels": [
-                                    {"type":"swt","port":1,"data0":0,"data1":0,"action":2}
-                                    ]
-                            },
-                            {
-                                "name": "DDR Lampe",
-                                "subchannels": [
-                                    {"type":"swt","port":1,"data0":0,"data1":1,"action":2}
-                                    ]
-                            }
-                        ]
+                  "type": "btn",
+                  "port": 15,
+                  "data0": 4,
+                  "name": "Aus"
                 },
-        {
-                    "lapaddr": -1,
-                    "name": "Musik",
-                    "host": "10.0.1.6",
-                    "port": 6603,
-                    "channels": [
-                            {
-                                "name": "Title",
-                                "subchannels": [
-                                    {"type": "text"}
-                                    ]
-                            },
-                            {
-                                "name": "Control",
-                                "subchannels": [
-                                    {"type":"btn","action":"previous","image":"glyphicon-step-backward"},
-                                    {"type":"btn","action":"stop","image":"glyphicon-stop"},
-                                    {"type":"btn","action":"play","image":"glyphicon-play"},
-                                    {"type":"btn","action":"pause","image":"glyphicon-pause"},
-                                    {"type":"btn","action":"next","image":"glyphicon-step-forward"}
-                                ]
-                            },
-                            {
-                                "name": "Volume",
-                                "subchannels": [
-                                    {"type": "sld", "action": "volume"}
-                                    ]
-                            }
-                        ]
-                }
-
-            ]
-        },{
-            "name": "Sonstiges",
-            "devices": [
                 {
-                    "lapaddr": 4,
-                    "name": "Klingel Test",
-                    "channels": [
-                            {
-                                "name": "Klingel",
-                                "subchannels": [ 
-                                    {"type":"btn","port":1,"data0":7,"data1":0,"name":"klingel"}
-                                    ]
-                            }
-                        ]
+                  "type": "btn",
+                  "port": 15,
+                  "data0": 2,
+                  "name": "Weiss"
+                },
+                {
+                  "type": "btn",
+                  "port": 15,
+                  "data0": 8,
+                  "name": "RGB"
                 }
-        ]
+              ]
+            }
+          ]
+        },
+        {
+          "lapaddr": -1,
+          "name": "Musik",
+          "host": "10.0.1.6",
+          "port": 6602,
+          "channels": [
+            {
+              "name": "Title",
+              "subchannels": [
+                {
+                  "type": "text"
+                }
+              ]
+            },
+            {
+              "name": "Control",
+              "subchannels": [
+                {
+                  "type": "btn",
+                  "action": "previous",
+                  "image": "glyphicon-step-backward"
+                },
+                {
+                  "type": "btn",
+                  "action": "stop",
+                  "image": "glyphicon-stop"
+                },
+                {
+                  "type": "btn",
+                  "action": "play",
+                  "image": "glyphicon-play"
+                },
+                {
+                  "type": "btn",
+                  "action": "pause",
+                  "image": "glyphicon-pause"
+                },
+                {
+                  "type": "btn",
+                  "action": "next",
+                  "image": "glyphicon-step-forward"
+                }
+              ]
+            },
+            {
+              "name": "Volume",
+              "subchannels": [
+                {
+                  "type": "sld",
+                  "action": "setvol"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Lounge",
+      "devices": [
+        {
+          "lapaddr": 96,
+          "name": "Labnode Tür",
+          "channels": [
+            {
+              "name": "Spot 1",
+              "subchannels": [
+                {
+                  "type": "swt",
+                  "port": 2,
+                  "data0": 0,
+                  "data1": 0,
+                  "action": 2,
+                  "response_srcport": 3,
+                  "response_bit": 0
+                },
+                {
+                  "type": "sld",
+                  "port": 2,
+                  "data0": 1,
+                  "data1": 0,
+                  "action": 2,
+                  "response_srcport": 3,
+                  "response_byte": 1
+                }
+              ]
+            },
+            {
+              "name": "Spot 2",
+              "subchannels": [
+                {
+                  "type": "swt",
+                  "port": 2,
+                  "data0": 0,
+                  "data1": 1,
+                  "action": 2,
+                  "response_srcport": 3,
+                  "response_bit": 1
+                },
+                {
+                  "type": "sld",
+                  "port": 2,
+                  "data0": 1,
+                  "data1": 1,
+                  "action": 2,
+                  "response_srcport": 3,
+                  "response_byte": 2
+                }
+              ]
+            },
+            {
+              "name": "Spot 3",
+              "subchannels": [
+                {
+                  "type": "swt",
+                  "port": 2,
+                  "data0": 0,
+                  "data1": 2,
+                  "action": 2,
+                  "response_srcport": 3,
+                  "response_bit": 2
+                },
+                {
+                  "type": "sld",
+                  "port": 2,
+                  "data0": 1,
+                  "data1": 2,
+                  "action": 2,
+                  "response_srcport": 3,
+                  "response_byte": 3
+                }
+              ]
+            },
+            {
+              "name": "Neon",
+              "subchannels": [
+                {
+                  "type": "swt",
+                  "port": 2,
+                  "data0": 0,
+                  "data1": 3,
+                  "action": 2,
+                  "response_srcport": 3,
+                  "response_bit": 3
+                },
+                {
+                  "type": "sld",
+                  "port": 2,
+                  "data0": 1,
+                  "data1": 3,
+                  "action": 2,
+                  "response_srcport": 3,
+                  "response_byte": 4
+                }
+              ]
+            },
+            {
+              "name": "Alle",
+              "subchannels": [
+                {
+                  "type": "swt",
+                  "port": 2,
+                  "data0": 3,
+                  "data1": 0,
+                  "action": 2
+                },
+                {
+                  "type": "sld",
+                  "port": 2,
+                  "data0": 4,
+                  "data1": 0,
+                  "action": 2
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "lapaddr": 97,
+          "name": "Labnode Wand",
+          "channels": [
+            {
+              "name": "Spot 1",
+              "subchannels": [
+                {
+                  "type": "swt",
+                  "port": 2,
+                  "data0": 0,
+                  "data1": 0,
+                  "action": 2,
+                  "response_srcport": 3,
+                  "response_bit": 0
+                },
+                {
+                  "type": "sld",
+                  "port": 2,
+                  "data0": 1,
+                  "data1": 0,
+                  "action": 2,
+                  "response_srcport": 3,
+                  "response_byte": 1
+                }
+              ]
+            },
+            {
+              "name": "Spot 2",
+              "subchannels": [
+                {
+                  "type": "swt",
+                  "port": 2,
+                  "data0": 0,
+                  "data1": 1,
+                  "action": 2,
+                  "response_srcport": 3,
+                  "response_bit": 1
+                },
+                {
+                  "type": "sld",
+                  "port": 2,
+                  "data0": 1,
+                  "data1": 1,
+                  "action": 2,
+                  "response_srcport": 3,
+                  "response_byte": 2
+                }
+              ]
+            },
+            {
+              "name": "Spot 3",
+              "subchannels": [
+                {
+                  "type": "swt",
+                  "port": 2,
+                  "data0": 0,
+                  "data1": 2,
+                  "action": 2,
+                  "response_srcport": 3,
+                  "response_bit": 2
+                },
+                {
+                  "type": "sld",
+                  "port": 2,
+                  "data0": 1,
+                  "data1": 2,
+                  "action": 2,
+                  "response_srcport": 3,
+                  "response_byte": 3
+                }
+              ]
+            },
+            {
+              "name": "Neon",
+              "subchannels": [
+                {
+                  "type": "swt",
+                  "port": 2,
+                  "data0": 0,
+                  "data1": 3,
+                  "action": 2,
+                  "response_srcport": 3,
+                  "response_bit": 3
+                },
+                {
+                  "type": "sld",
+                  "port": 2,
+                  "data0": 1,
+                  "data1": 3,
+                  "action": 2,
+                  "response_srcport": 3,
+                  "response_byte": 4
+                }
+              ]
+            },
+            {
+              "name": "Alle",
+              "subchannels": [
+                {
+                  "type": "swt",
+                  "port": 2,
+                  "data0": 3,
+                  "data1": 0,
+                  "action": 2
+                },
+                {
+                  "type": "sld",
+                  "port": 2,
+                  "data0": 4,
+                  "data1": 0,
+                  "action": 2
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "lapaddr": -1,
+          "name": "Musik",
+          "host": "10.0.1.6",
+          "port": 6601,
+          "channels": [
+            {
+              "name": "Title",
+              "subchannels": [
+                {
+                  "type": "text"
+                }
+              ]
+            },
+            {
+              "name": "Control",
+              "subchannels": [
+                {
+                  "type": "btn",
+                  "action": "previous",
+                  "image": "glyphicon-step-backward"
+                },
+                {
+                  "type": "btn",
+                  "action": "stop",
+                  "image": "glyphicon-stop"
+                },
+                {
+                  "type": "btn",
+                  "action": "play",
+                  "image": "glyphicon-play"
+                },
+                {
+                  "type": "btn",
+                  "action": "pause",
+                  "image": "glyphicon-pause"
+                },
+                {
+                  "type": "btn",
+                  "action": "next",
+                  "image": "glyphicon-step-forward"
+                }
+              ]
+            },
+            {
+              "name": "Volume",
+              "subchannels": [
+                {
+                  "type": "sld",
+                  "action": "volume"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Bastelraum",
+      "devices": [
+        {
+          "lapaddr": 169,
+          "name": "Bastelcmd",
+          "channels": [
+            {
+              "name": "Basteltische Mitte #1",
+              "subchannels": [
+                {
+                  "type": "swt",
+                  "port": 1,
+                  "data0": 0,
+                  "data1": 1,
+                  "action": 2,
+                  "response_srcport": 3,
+                  "response_bit": 1
+                }
+              ]
+            },
+            {
+              "name": "Basteltische Mitte #2",
+              "subchannels": [
+                {
+                  "type": "swt",
+                  "port": 1,
+                  "data0": 0,
+                  "data1": 2,
+                  "action": 2,
+                  "response_srcport": 3,
+                  "response_bit": 2
+                }
+              ]
+            },
+            {
+              "name": "Basteltische Fenster #1",
+              "subchannels": [
+                {
+                  "type": "swt",
+                  "port": 1,
+                  "data0": 0,
+                  "data1": 3,
+                  "action": 2,
+                  "response_srcport": 3,
+                  "response_bit": 3
+                }
+              ]
+            },
+            {
+              "name": "Basteltische Fenster #2",
+              "subchannels": [
+                {
+                  "type": "swt",
+                  "port": 1,
+                  "data0": 0,
+                  "data1": 4,
+                  "action": 2,
+                  "response_srcport": 3,
+                  "response_bit": 4
+                }
+              ]
+            },
+            {
+              "name": "Große Neon Fenster",
+              "subchannels": [
+                {
+                  "type": "swt",
+                  "port": 1,
+                  "data0": 0,
+                  "data1": 5,
+                  "action": 2,
+                  "response_srcport": 3,
+                  "response_bit": 5
+                },
+                {
+                  "type": "sld",
+                  "port": 1,
+                  "data0": 1,
+                  "data1": 0,
+                  "action": 2,
+                  "response_srcport": 3,
+                  "response_byte": 1
+                }
+              ]
+            },
+            {
+              "name": "Große Neon Mitte",
+              "subchannels": [
+                {
+                  "type": "swt",
+                  "port": 1,
+                  "data0": 0,
+                  "data1": 6,
+                  "action": 2,
+                  "response_srcport": 3,
+                  "response_bit": 6
+                },
+                {
+                  "type": "sld",
+                  "port": 1,
+                  "data0": 1,
+                  "data1": 1,
+                  "action": 2,
+                  "response_srcport": 3,
+                  "response_byte": 2
+                }
+              ]
+            },
+            {
+              "name": "Große Neon Drucker",
+              "subchannels": [
+                {
+                  "type": "swt",
+                  "port": 1,
+                  "data0": 0,
+                  "data1": 7,
+                  "action": 2,
+                  "response_srcport": 3,
+                  "response_bit": 7
+                },
+                {
+                  "type": "sld",
+                  "port": 1,
+                  "data0": 1,
+                  "data1": 2,
+                  "action": 2,
+                  "response_srcport": 3,
+                  "response_byte": 3
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "lapaddr": -1,
+          "name": "Musik",
+          "host": "10.0.1.6",
+          "port": 6600,
+          "channels": [
+            {
+              "name": "Title",
+              "subchannels": [
+                {
+                  "type": "text"
+                }
+              ]
+            },
+            {
+              "name": "Control",
+              "subchannels": [
+                {
+                  "type": "btn",
+                  "action": "previous",
+                  "image": "glyphicon-step-backward"
+                },
+                {
+                  "type": "btn",
+                  "action": "stop",
+                  "image": "glyphicon-stop"
+                },
+                {
+                  "type": "btn",
+                  "action": "play",
+                  "image": "glyphicon-play"
+                },
+                {
+                  "type": "btn",
+                  "action": "pause",
+                  "image": "glyphicon-pause"
+                },
+                {
+                  "type": "btn",
+                  "action": "next",
+                  "image": "glyphicon-step-forward"
+                }
+              ]
+            },
+            {
+              "name": "Volume",
+              "subchannels": [
+                {
+                  "type": "sld",
+                  "action": "volume"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Küche",
+      "devices": [
+        {
+          "lapaddr": 35,
+          "name": "KüchenCAN",
+          "channels": [
+            {
+              "name": "Temperature",
+              "subchannels": [
+                {
+                  "type": "graph",
+                  "multi": 1,
+                  "response_srcport": 15,
+                  "response_byte": 0
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "lapaddr": 2,
+          "name": "Powercommander",
+          "channels": [
+            {
+              "name": "Küche",
+              "subchannels": [
+                {
+                  "type": "swt",
+                  "port": 2,
+                  "data0": 0,
+                  "data1": 5,
+                  "action": 2,
+                  "response_srcport": 2,
+                  "response_bit": 4
+                },
+                {
+                  "type": "sld",
+                  "port": 2,
+                  "data0": 1,
+                  "data1": 5,
+                  "action": 2,
+                  "response_srcport": 2,
+                  "response_byte": 6
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Keller",
+      "devices": [
+        {
+          "lapaddr": 19,
+          "name": "KellerLabnode",
+          "channels": [
+            {
+              "name": "Neon",
+              "subchannels": [
+                {
+                  "type": "swt",
+                  "port": 1,
+                  "data0": 0,
+                  "data1": 0,
+                  "action": 2
+                }
+              ]
+            },
+            {
+              "name": "DDR Lampe",
+              "subchannels": [
+                {
+                  "type": "swt",
+                  "port": 1,
+                  "data0": 0,
+                  "data1": 1,
+                  "action": 2
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "lapaddr": -1,
+          "name": "Musik",
+          "host": "10.0.1.6",
+          "port": 6603,
+          "channels": [
+            {
+              "name": "Title",
+              "subchannels": [
+                {
+                  "type": "text"
+                }
+              ]
+            },
+            {
+              "name": "Control",
+              "subchannels": [
+                {
+                  "type": "btn",
+                  "action": "previous",
+                  "image": "glyphicon-step-backward"
+                },
+                {
+                  "type": "btn",
+                  "action": "stop",
+                  "image": "glyphicon-stop"
+                },
+                {
+                  "type": "btn",
+                  "action": "play",
+                  "image": "glyphicon-play"
+                },
+                {
+                  "type": "btn",
+                  "action": "pause",
+                  "image": "glyphicon-pause"
+                },
+                {
+                  "type": "btn",
+                  "action": "next",
+                  "image": "glyphicon-step-forward"
+                }
+              ]
+            },
+            {
+              "name": "Volume",
+              "subchannels": [
+                {
+                  "type": "sld",
+                  "action": "volume"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Sonstiges",
+      "devices": [
+        {
+          "lapaddr": 4,
+          "name": "Klingel Test",
+          "channels": [
+            {
+              "name": "Klingel",
+              "subchannels": [
+                {
+                  "type": "btn",
+                  "port": 1,
+                  "data0": 7,
+                  "data1": 0,
+                  "name": "klingel"
+                }
+              ]
+            }
+          ]
+        }
+      ]
     }
-    ]
+  ]
 }
