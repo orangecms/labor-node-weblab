@@ -1,133 +1,67 @@
-var conf = require('./config.js');
-var http = require('./http.js');
-var io = require('socket.io').listen(http.server);
-var mpd = require('mpd'),
-    cmd = mpd.cmd;
-var registerCANCallbacks = function () {};
-const handleCANData = function (data, subchannel) {
-  console.log(data, subchannel);
-};
+const conf = require('./config');
+const http = require('./http');
+const io = require('socket.io').listen(http.server);
+const { mpdConnect, setMpdValue } = require('./mpd');
+const { registerCANCallbacks, handleCANData } = require('./cand');
 
 //io.enable('browser client minification');  // send minified client
 //io.enable('browser client etag');          // apply etag caching logic based on version number
 //io.enable('browser client gzip');          // gzip the file
 //io.set('log level', 1);                    // reduce logging
 
-for (var i in conf.rooms) {
-  var room = conf.rooms[i];
-  for (var j in room.devices) {
-    var device = room.devices[j];
-    if (device.name == "Musik") {
-      console.log("trying " + device.host + " : " + device.port);
-      var client = mpd.connect({
-        port: device.port,
-        host: device.host,
-      });
+conf.rooms.forEach(room => room.devices.filter(
+  device => device.name === 'Musik'
+).forEach(mpdConnect)); // FIXME: has side-effects
 
-      device.mpdclient = client;
+const updateUI = ({ type, id, value }) => io.emit(
+  'UpdateGUI',
+  [{
+    fkt: type,
+    dev: id,
+    val: value,
+  }]
+);
 
-      client.on('error', function(err) {
-        console.log("Error couldn't connect to mpd! Please check mpd server");
-      });
-
-      client.on('ready', function() {
-        console.log("ready");
-        this.sendCommand(cmd("currentsong", []), function(err, msg) {
-          var lines = msg.split('\n');
-          var currentsonginfo = "";
-          for (var i in lines) {
-            var line = lines[i];
-            if (line.indexOf("Title:") == 0) currentsonginfo += line + "\n";
-            if (line.indexOf("Album:") == 0) currentsonginfo += line + "\n";
-            if (line.indexOf("Artist:") == 0) currentsonginfo += line + "\n";
-          }
-          device.currentsonginfo = currentsonginfo;
-          console.log(currentsonginfo);
-        });
-        this.sendCommand(cmd("status", []), function(err, msg) {
-          if (err) throw err;
-          console.log(msg);
-        });
-      });
-
-      client.on('system-player', function() {
-        this.sendCommand(
-          cmd("status", []),
-          function(err, msg) {
-            if (err) throw err;
-            console.log(msg);
-          }
-        );
-      });
-
-      client.on('system-mixer', function() {
-
-      });
-    }
-  }
-}
-
-registerCANCallbacks(conf.subchannels);
+registerCANCallbacks(conf.subchannels, updateUI);
 
 io.sockets.on('connection', function (socket) {
-  console.log("new connection");
-
+  console.log('[GUI] new connection');
   socket.on('GetStat', function (data) {
-    var subchannels = conf.get_subchannel_with_value();
-    var clientChannels = [];
-    for (var i in subchannels) {
-      var subchannel = subchannels[i];
-      if (subchannel.type == "swt") {
-        clientChannels.push({
-          fkt: 'sw',
-          dev: subchannel.id,
-          val: subchannel.currentvalue
-        });
+    const clientChannels = [];
+    conf.get_subchannel_with_value().forEach((subchannel) => {
+      const { type, id, currentvalue } = subchannel;
+      switch (type) {
+        case 'swt':
+          clientChannels.push({ fkt: 'sw', dev: id, val: currentvalue });
+          break;
+        case 'sld':
+          clientChannels.push({ fkt: 'sl', dev: id, val: currentvalue });
+          break;
+        default:
+          break;
       }
-      if (subchannel.type == "sld") {
-        clientChannels.push({
-          fkt: 'sl',
-          dev: subchannel.id,
-          val: subchannel.currentvalue
-        });
-      }
-    }
+    });
     socket.emit('UpdateGUI', clientChannels);
   });
 
   socket.on('SetValue', (data) => {
-    console.log("GUI -> node: " + data.fkt + " " + data.dev + " " + data.val);
-    var subchannel = conf.get_subchannel_by_id(data.dev);
-    if (typeof subchannel == "undefined") {
-      console.log("could not find subchannel with id " + data.dev);
+    console.log(`[GUI] -> node: ${data.fkt} ${data.dev} ${data.val}`);
+    const subchannel = conf.get_subchannel_by_id(data.dev);
+    if (typeof subchannel === 'undefined') {
+      console.error(`could not find subchannel with id ${data.dev}`);
       return;
     }
-    //mpd packet
+    // MPD packet
     if (subchannel.lapaddr < 0 ) {
-      var mpdarg = [];
-      if (typeof data.val != "undefined") {
-        mpdarg = [parseInt(data.val * 100 / 255)];
-      }
-      console.log("cmd:" + subchannel.action + " arg: " + typeof mpdarg + "dataval " + data.val);
-
-      subchannel.device.mpdclient.sendCommand(
-        cmd(subchannel.action, mpdarg),
-        function(err, msg) {
-          if (err) console.log("mpd error " + err);
-          console.log(msg);
-        }
-      );
+      setMpdValue(subchannel, data);
       return;
     }
-
+    // CAN packet
     handleCANData(data, subchannel);
-
-    //io.sockets.emit('message', data);
   });
 });
 
 process.on('exit', function () {
-  //netvar_client.terminate();
   console.log('exit');
 });
 

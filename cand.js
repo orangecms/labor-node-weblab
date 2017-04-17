@@ -1,113 +1,113 @@
-var can_client = require('./can.js');
+const can_client = require('./can.js');
+const { CANPacket } = can_client;
 
-var canCallbacks = [];
+const canCallbacks = [];
 
-var registerCANCallBack = function(callback, sourceaddress, sourceport, subchannel) {
+const registerCANCallBack = (subchannel, onReceivePacket) => {
   canCallbacks.push({
-    addr: sourceaddress,
-    port: sourceport,
+    addr: subchannel.lapaddr,
+    port: subchannel.response_srcport,
     sub: subchannel,
-    callback: callback,
-    cb: function(data) {
-      if (data.source_addr == this.addr && data.source_port == this.port) {
+    onReceivePacket: function(data) {
+      if (
+        data.source_addr == this.addr &&
+        data.source_port == this.port
+      ) {
         //console.log("addr = " + this.addr + " port " + this.port);
-        this.callback(data, this.sub);
+        onReceivePacket(data, this.sub);
       }
     }
   });
 }
 
+const handleSwitch = updateUI => function(data, sub) {
+  const byte_indx = parseInt(sub.response_bit / 8);
+  if (data.dlc > byte_indx) {
+    sub.currentvalue =
+      data.data[byte_indx] &
+      (1 << (sub.response_bit % 8));
+    updateUI({ type: 'sw', id: sub.id, value: sub.currentvalue });
+    console.log(
+     `[CAN] emitting packet ${sub.id} val ${sub.currentvalue}`
+    );
+  }
+};
+
+const handleSlider = updateUI => function(data, sub) {
+  if (data.dlc > sub.response_byte) {
+    sub.currentvalue = data.data[sub.response_byte];
+    updateUI({ type: 'sl', id: sub.id, value: sub.currentvalue });
+  }
+};
+
+const handleGraph = updateUI => function(data, sub) {
+  const value = data.data[sub.response_byte];
+  updateUI({ type: 'graph', id: sub.id, value });
+};
+
 // prepare objects for fast access
-var registerCANCallbacks = function(io, subchannels) {
-  for (var i in subchannels) {
-    var subchannel = subchannels[i];
+var registerCANCallbacks = function(subchannels, updateUI) {
+  subchannels.forEach((subchannel) => {
     switch (subchannel.type) {
       case 'swt':
-        registerCANCallBack(
-          function(data, sub) {
-            var byte_indx = parseInt(sub.response_bit / 8);
-            if (data.dlc > byte_indx) {
-              sub.currentvalue = data.data[byte_indx] & (1<<(sub.response_bit%8));
-              io.emit('UpdateGUI', [{'fkt': 'sw', 'dev': sub.id, 'val': sub.currentvalue}]);
-              console.log("emitting packet " + sub.id + " val " + sub.currentvalue);
-            }
-          },
-          subchannel.lapaddr,
-          subchannel.response_srcport,
-          subchannel
-        );
+        registerCANCallBack(subchannel, handleSwitch(updateUI));
         break;
       case 'sld':
-        registerCANCallBack(
-          function(data, sub) {
-            if (data.dlc > sub.response_byte) {
-              sub.currentvalue = data.data[sub.response_byte];
-              io.emit('UpdateGUI', [{'fkt': 'sl', 'dev': sub.id, 'val': sub.currentvalue}]);
-            }
-          },
-          subchannel.lapaddr,
-          subchannel.response_srcport,
-          subchannel
-        );
+        registerCANCallBack(subchannel, handleSlider(updateUI));
         break;
       case 'graph':
-        registerCANCallBack(
-          function(data, sub) {
-            io.sockets.emit('UpdateGUI', [{'fkt': 'graph', 'dev': sub.id, 'val': data.data[sub.response_byte]}]);
-        }, subchannel.lapaddr, subchannel.response_srcport, subchannel);
+        registerCANCallBack(subchannel, handleGraph(updateUI));
         break;
     }
-  };
+  });
 }
 
 can_client.on('packet', function(data) {
-  for (var i in canCallbacks) {
-    canCallbacks[i].cb(data);
-  }
+  canCallbacks.forEach(canCallback => canCallback.onReceivePacket(data));
 });
 
-can_client.on('connected', function() {
-  console.log('can connected');
-});
-
-var handleCANData = function(data, subchannel) {
-  var CANPacket = can_client.CANPacket;
-  CANPacket.source_addr = 0;
-  CANPacket.destination_addr = subchannel.lapaddr;
-  CANPacket.source_port = subchannel.port;
-  CANPacket.destination_port = subchannel.port;
-  CANPacket.dlc = 0;
+const handleCANData = function(data, subchannel) {
+  const packet = new CANPacket();
+  packet.source_addr = 0;
+  packet.destination_addr = subchannel.lapaddr;
+  packet.source_port = subchannel.port;
+  packet.destination_port = subchannel.port;
+  packet.dlc = 0;
   if (typeof subchannel.data0 != "undefined") {
-    CANPacket.data[0] = (data.fkt == 'lock' ? subchannel.data0 + 1 : subchannel.data0);
-    CANPacket.dlc += 1;
+    packet.data[0] = (
+      data.fkt == 'lock' ? subchannel.data0 + 1 : subchannel.data0
+    );
+    packet.dlc += 1;
   }
   if (typeof subchannel.data1 != "undefined") {
-    CANPacket.data[1] = subchannel.data1;
-    CANPacket.dlc += 1;
+    packet.data[1] = subchannel.data1;
+    packet.dlc += 1;
   }
   if (typeof subchannel.data2 != "undefined") {
-    CANPacket.data[2] = subchannel.data2;
-    CANPacket.dlc += 1;
+    packet.data[2] = subchannel.data2;
+    packet.dlc += 1;
   }
   if (typeof subchannel.data3 != "undefined") {
-    CANPacket.data[3] = subchannel.data3;
-    CANPacket.dlc += 1;
+    packet.data[3] = subchannel.data3;
+    packet.dlc += 1;
   }
   if (typeof subchannel.data4 != "undefined") {
-    CANPacket.data[4] = subchannel.data4;
-    CANPacket.dlc += 1;
+    packet.data[4] = subchannel.data4;
+    packet.dlc += 1;
   }
   if (typeof subchannel.action != "undefined") {
-    CANPacket.data[parseInt(subchannel.action)] = parseInt(data.val);
-    if (CANPacket.dlc < parseInt(subchannel.action) + 1) {
-      CANPacket.dlc = parseInt(subchannel.action) + 1;
+    packet.data[parseInt(subchannel.action)] = parseInt(data.val);
+    const minDlc = parseInt(subchannel.action) + 1;
+    if (packet.dlc < minDlc) {
+      packet.dlc = minDlc;
     }
   }
-  CANPacket.senddata();
-  delete CANPacket;
+  console.log('[CAN] sending', packet.data);
+  packet.senddata();
+  delete packet;
 }
 
 module.exports = {
-  registerCANCallbacks: registerCANCallbacks,
-  handleCANData: handleCANData,
+  registerCANCallbacks,
+  handleCANData,
 };
