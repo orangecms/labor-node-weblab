@@ -1,5 +1,7 @@
-const can_client = require('./can.js');
-const { CANPacket } = can_client;
+const can = require('./canClient');
+const CANPacket = require('./canPacket');
+
+const { client } = can;
 
 const canCallbacks = [];
 
@@ -62,11 +64,11 @@ var registerCANCallbacks = function(subchannels, updateUI) {
   });
 }
 
-can_client.on('packet', function(data) {
+can.on('packet', function(data) {
   canCallbacks.forEach(canCallback => canCallback.onReceivePacket(data));
 });
 
-const handleCANData = function(data, subchannel) {
+const sendCANData = function(subchannel, data) {
   const packet = new CANPacket();
   packet.source_addr = 0;
   packet.destination_addr = subchannel.lapaddr;
@@ -102,12 +104,11 @@ const handleCANData = function(data, subchannel) {
       packet.dlc = minDlc;
     }
   }
-  console.log('[CAN] sending', packet.data);
-  packet.senddata();
+  packet.senddata(client);
   delete packet;
 }
 
 module.exports = {
   registerCANCallbacks,
-  handleCANData,
+  sendCANData,
 };

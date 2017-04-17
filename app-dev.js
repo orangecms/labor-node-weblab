@@ -2,7 +2,7 @@ const conf = require('./config');
 const http = require('./http');
 const io = require('socket.io').listen(http.server);
 const { mpdConnect, setMpdValue } = require('./mpd');
-const { registerCANCallbacks, handleCANData } = require('./cand');
+const { registerCANCallbacks, sendCANData } = require('./can');
 
 //io.enable('browser client minification');  // send minified client
 //io.enable('browser client etag');          // apply etag caching logic based on version number
@@ -57,7 +57,7 @@ io.sockets.on('connection', function (socket) {
       return;
     }
     // CAN packet
-    handleCANData(data, subchannel);
+    sendCANData(subchannel, data);
   });
 });
 
