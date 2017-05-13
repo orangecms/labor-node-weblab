@@ -3,8 +3,13 @@ Our hackerspace home automation nodejs base
 
 = How to use =
 
-Simply edit globalconfig.json and call npm install.
-For mpd functionality add your own roomconfig.json
+For the connection to cand and the HTTP interface of this app, edit `globalconfig.json`.
+For mpd functionality and UI elements, copy `roomconfig.example.json` to `roomconfig.json .
+To build and run the app:
+```bash
+npm install
+npm start
+```
 
 ## `roomconfig.json`
 
