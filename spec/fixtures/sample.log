@@ -1,0 +1,399 @@
+new connection
+volume: 50
+repeat: 0
+random: 0
+single: 0
+consume: 0
+playlist: 66
+playlistlength: 65
+mixrampdb: 0.000000
+state: play
+song: 50
+songid: 51
+time: 0:211
+elapsed: 0.348
+bitrate: 134
+audio: 44100:f:2
+nextsong: 51
+nextsongid: 52
+
+volume: 50
+repeat: 0
+random: 0
+single: 0
+consume: 0
+playlist: 66
+playlistlength: 65
+mixrampdb: 0.000000
+state: play
+song: 50
+songid: 51
+time: 0:211
+elapsed: 0.417
+bitrate: 137
+audio: 44100:f:2
+nextsong: 51
+nextsongid: 52
+
+^CGot SIGINT.
+exit
+
+
+
+
+🐢  npm start                                                                                                                        ↵ 130
+
+> NodeWeblabcontrol@0.0.1 start /home/shopco/opensource/labor-node-weblab
+> node app.js
+
+trying 10.0.1.6 : 6602
+trying 10.0.1.6 : 6601
+trying 10.0.1.6 : 6600
+trying 10.0.1.6 : 6603
+cand client connected to wl:2342
+can connected
+ready
+ready
+ready
+ready
+Title: Bonobo - Emkay
+
+volume: -1
+repeat: 0
+random: 1
+single: 0
+consume: 0
+playlist: 31
+playlistlength: 15
+mixrampdb: 0.000000
+state: stop
+song: 0
+songid: 15
+nextsong: 5
+nextsongid: 5
+
+Album: Melody A.M.
+Artist: Röyksopp
+Title: In Space
+
+volume: 50
+repeat: 0
+random: 0
+single: 0
+consume: 0
+playlist: 66
+playlistlength: 65
+mixrampdb: 0.000000
+state: play
+song: 50
+songid: 51
+time: 65:211
+elapsed: 64.748
+bitrate: 163
+audio: 44100:f:2
+nextsong: 51
+nextsongid: 52
+
+Artist: Chemical Brothers
+Title: Leave home
+Album: Exit Planet Dust
+
+volume: -1
+repeat: 0
+random: 0
+single: 0
+consume: 0
+playlist: 2
+playlistlength: 11
+mixrampdb: 0.000000
+state: stop
+song: 0
+songid: 1
+nextsong: 1
+nextsongid: 2
+
+
+volume: -1
+repeat: 0
+random: 0
+single: 0
+consume: 0
+playlist: 1
+playlistlength: 0
+mixrampdb: 0.000000
+state: stop
+
+new connection
+/home/shopco/opensource/labor-node-weblab/views/layoutdesktop.jade, line 26:
+You should not have jade tags with multiple attributes.
+Warning: missing space before text for line 27 of jade file "/home/shopco/opensource/labor-node-weblab/views/layoutdesktop.jade"
+Warning: missing space before text for line 28 of jade file "/home/shopco/opensource/labor-node-weblab/views/layoutdesktop.jade"
+new connection
+
+
+GUI -> node: sw 41 1
+GUI -> node: sw 39 1
+GUI -> node: sl 40 6
+GUI -> node: sl 40 36
+GUI -> node: sl 40 40
+GUI -> node: sl 40 42
+GUI -> node: sl 40 44
+GUI -> node: sl 40 47
+GUI -> node: sl 40 51
+GUI -> node: sl 40 55
+GUI -> node: sl 40 60
+GUI -> node: sl 40 60
+GUI -> node: sl 40 60
+GUI -> node: sl 40 60
+GUI -> node: sl 40 60
+GUI -> node: sl 40 60
+GUI -> node: sl 40 60
+GUI -> node: sl 40 60
+GUI -> node: sl 40 66
+GUI -> node: sl 40 69
+GUI -> node: sl 40 75
+GUI -> node: sl 40 75
+GUI -> node: sl 40 92
+GUI -> node: sl 40 98
+GUI -> node: sl 40 98
+GUI -> node: sl 40 104
+GUI -> node: sl 40 107
+GUI -> node: sl 40 112
+GUI -> node: sl 40 115
+GUI -> node: sl 40 118
+GUI -> node: sl 40 122
+GUI -> node: sl 40 125
+GUI -> node: sl 40 128
+GUI -> node: sl 40 130
+GUI -> node: sl 40 133
+GUI -> node: sl 40 135
+GUI -> node: sl 40 136
+GUI -> node: sl 40 138
+GUI -> node: sl 40 138
+GUI -> node: sl 40 139
+GUI -> node: sl 40 140
+GUI -> node: sl 40 142
+GUI -> node: sl 40 142
+GUI -> node: sl 40 142
+GUI -> node: sl 40 142
+GUI -> node: sl 40 142
+GUI -> node: sl 40 142
+GUI -> node: sl 40 142
+GUI -> node: sl 40 142
+GUI -> node: sl 40 142
+GUI -> node: sw 39 0
+GUI -> node: sw 45 1
+GUI -> node: sl 46 9
+GUI -> node: sl 46 124
+GUI -> node: sl 46 134
+GUI -> node: sl 46 144
+GUI -> node: sl 46 150
+GUI -> node: sl 46 155
+GUI -> node: sl 46 158
+GUI -> node: sl 46 162
+GUI -> node: sl 46 165
+GUI -> node: sl 46 168
+GUI -> node: sl 46 173
+GUI -> node: sl 46 176
+GUI -> node: sl 46 178
+GUI -> node: sl 46 180
+GUI -> node: sl 46 181
+GUI -> node: sl 46 183
+GUI -> node: sl 46 183
+GUI -> node: sl 46 184
+GUI -> node: sl 46 184
+GUI -> node: sl 46 184
+GUI -> node: sl 46 185
+GUI -> node: sl 46 185
+GUI -> node: sl 46 185
+GUI -> node: sl 46 185
+GUI -> node: sl 46 185
+GUI -> node: sl 46 185
+GUI -> node: sl 46 185
+GUI -> node: sl 46 185
+GUI -> node: sl 46 185
+GUI -> node: sl 46 185
+GUI -> node: sw 45 0
+GUI -> node: sw 47 1
+GUI -> node: sw 47 0
+GUI -> node: sw 57 1
+emitting packet 49 val 1
+emitting packet 51 val 2
+emitting packet 53 val 4
+emitting packet 55 val 8
+emitting packet 0 val 8
+emitting packet 2 val 0
+emitting packet 4 val 0
+emitting packet 6 val 0
+emitting packet 10 val 2
+emitting packet 84 val 16
+GUI -> node: sw 57 0
+emitting packet 49 val 0
+emitting packet 51 val 0
+emitting packet 53 val 0
+emitting packet 55 val 0
+emitting packet 0 val 8
+emitting packet 2 val 0
+emitting packet 4 val 0
+emitting packet 6 val 0
+emitting packet 10 val 2
+emitting packet 84 val 16
+GUI -> node: sw 57 1
+emitting packet 49 val 1
+emitting packet 51 val 2
+emitting packet 53 val 4
+emitting packet 55 val 8
+emitting packet 0 val 8
+emitting packet 2 val 0
+emitting packet 4 val 0
+emitting packet 6 val 0
+emitting packet 10 val 2
+emitting packet 84 val 16
+GUI -> node: sw 57 0
+emitting packet 49 val 0
+emitting packet 51 val 0
+emitting packet 53 val 0
+emitting packet 55 val 0
+emitting packet 0 val 8
+emitting packet 2 val 0
+emitting packet 4 val 0
+emitting packet 6 val 0
+emitting packet 10 val 2
+emitting packet 84 val 16
+GUI -> node: sw 47 1
+GUI -> node: sw 47 0
+volume: 50
+repeat: 0
+random: 0
+single: 0
+consume: 0
+playlist: 66
+playlistlength: 65
+mixrampdb: 0.000000
+state: play
+song: 51
+songid: 52
+time: 0:304
+elapsed: 0.232
+bitrate: 256
+audio: 44100:24:2
+nextsong: 52
+nextsongid: 53
+
+volume: 50
+repeat: 0
+random: 0
+single: 0
+consume: 0
+playlist: 66
+playlistlength: 65
+mixrampdb: 0.000000
+state: play
+song: 51
+songid: 52
+time: 0:304
+elapsed: 0.301
+bitrate: 256
+audio: 44100:24:2
+nextsong: 52
+nextsongid: 53
+
+GUI -> node: sw 53 1
+emitting packet 49 val 0
+emitting packet 51 val 0
+emitting packet 53 val 4
+emitting packet 55 val 0
+emitting packet 0 val 8
+emitting packet 2 val 0
+emitting packet 4 val 0
+emitting packet 6 val 0
+emitting packet 10 val 2
+emitting packet 84 val 16
+GUI -> node: sw 53 0
+emitting packet 49 val 0
+emitting packet 51 val 0
+emitting packet 53 val 0
+emitting packet 55 val 0
+emitting packet 0 val 8
+emitting packet 2 val 0
+emitting packet 4 val 0
+emitting packet 6 val 0
+emitting packet 10 val 2
+emitting packet 84 val 16
+GUI -> node: sw 49 1
+emitting packet 49 val 1
+emitting packet 51 val 0
+emitting packet 53 val 0
+emitting packet 55 val 0
+emitting packet 0 val 8
+emitting packet 2 val 0
+emitting packet 4 val 0
+emitting packet 6 val 0
+emitting packet 10 val 2
+emitting packet 84 val 16
+GUI -> node: sw 49 0
+emitting packet 49 val 0
+emitting packet 51 val 0
+emitting packet 53 val 0
+emitting packet 55 val 0
+emitting packet 0 val 8
+emitting packet 2 val 0
+emitting packet 4 val 0
+emitting packet 6 val 0
+emitting packet 10 val 2
+emitting packet 84 val 16
+GUI -> node: sw 51 1
+emitting packet 49 val 0
+emitting packet 51 val 2
+emitting packet 53 val 0
+emitting packet 55 val 0
+emitting packet 0 val 8
+emitting packet 2 val 0
+emitting packet 4 val 0
+emitting packet 6 val 0
+emitting packet 10 val 2
+emitting packet 84 val 16
+GUI -> node: sw 51 0
+emitting packet 49 val 0
+emitting packet 51 val 0
+emitting packet 53 val 0
+emitting packet 55 val 0
+emitting packet 0 val 8
+emitting packet 2 val 0
+emitting packet 4 val 0
+emitting packet 6 val 0
+emitting packet 10 val 2
+emitting packet 84 val 16
+GUI -> node: sw 55 1
+emitting packet 49 val 0
+emitting packet 51 val 0
+emitting packet 53 val 0
+emitting packet 55 val 8
+emitting packet 0 val 8
+emitting packet 2 val 0
+emitting packet 4 val 0
+emitting packet 6 val 0
+emitting packet 10 val 2
+emitting packet 84 val 16
+GUI -> node: sw 55 0
+emitting packet 49 val 0
+emitting packet 51 val 0
+emitting packet 53 val 0
+emitting packet 55 val 0
+emitting packet 0 val 8
+emitting packet 2 val 0
+emitting packet 4 val 0
+emitting packet 6 val 0
+emitting packet 10 val 2
+emitting packet 84 val 16
+GUI -> node: sw 57 1
+error: cand connection not possible
+could not connect to wl:2342
+cand client connected to wl:2342
+can connected
+GUI -> node: sw 57 0
+GUI -> node: sw 57 1
+GUI -> node: sw 57 0
+^CGot SIGINT.
+exit
+
