@@ -3,7 +3,7 @@ var http = require('./http.js');
 var io = require('socket.io').listen(http.server);
 var mpd = require('mpd'),
     cmd = mpd.cmd;
-var cand = require('./cand.js'),
+var cand = require('./can'),
     registerCANCallbacks = cand.registerCANCallbacks,
     handleCANData = cand.handleCANData;
 
