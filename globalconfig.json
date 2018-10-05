@@ -1,10 +1,10 @@
 {
-    "http": {
-           "port": 8880,
-           "hostname": "127.0.0.1"
-    },
-    "canconfig": {
-           "port": 2342,
-           "hostname": "10.0.1.4"
-    }
+  "http": {
+    "port": 8880,
+    "hostname": "127.0.0.1"
+  },
+  "canconfig": {
+    "port": 2342,
+    "hostname": "can-gateway"
+  }
 }
