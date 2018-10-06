@@ -3,12 +3,13 @@
   "version": "0.0.1",
   "description": "Controll Labor automatisation",
   "dependencies": {
-    "socket.io": "~1",
-    "express": "~4",
     "compression": "~1",
-    "method-override": "~1",
+    "express": "~4",
     "jade": "latest",
-    "mpd": "latest"
+    "method-override": "~1",
+    "mpd": "latest",
+    "mqtt": "^2.18.8",
+    "socket.io": "~1"
   },
   "author": "developer",
   "scripts": {

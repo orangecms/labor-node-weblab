@@ -1,6 +1,7 @@
 const conf = require('./config');
 const http = require('./http');
 const io = require('socket.io').listen(http.server);
+const mqtt = require('mqtt');
 const { mpdConnect, setMpdValue } = require('./mpd');
 const { registerCANCallbacks, sendCANData } = require('./can');
 
@@ -39,6 +40,53 @@ const setValue = (data) => {
   // CAN packet
   sendCANData(subchannel, data);
 }
+module.exports.setValue = setValue;
+
+const { mqtt: mqttCfg } = conf.global;
+const mqttAddress = `${mqttCfg.hostname}:${mqttCfg.port}`;
+const mqttClient  = mqtt.connect(`mqtt://${mqttAddress}`)
+
+mqttClient.on('connect', function () {
+  console.info(`[MQTT] connected to ${mqttAddress}`);
+  mqttClient.subscribe('Labor/#', () => {
+    console.info('[MQTT] subscribed');
+  });
+});
+
+const fktMap = {
+  btn: 'sw',
+  swt: 'sw',
+  sld: 'sl',
+};
+
+mqttClient.on('message', function (topic, message) {
+  const topicParts = topic.split('/');
+  if (topicParts.length === 5) {
+    const [
+      location, // always 'Labor'
+      roomName,
+      deviceName,
+      channelName,
+      subchannelNameOrType
+    ] = topicParts;
+    const subchannel = conf.get_subchannel({
+      roomName,
+      deviceName,
+      channelName,
+      subchannelNameOrType
+    });
+    if (!subchannel) {
+      console.warn(
+        `[MQTT] subchannel ${subchannelNameOrType} not found`
+      );
+      return;
+    }
+    const { id: dev, type } = subchannel;
+    const fkt = fktMap[type];
+    const val = message.toString();
+    setValue({ fkt, dev, val });
+  }
+});
 
 io.sockets.on('connection', function (socket) {
   console.log('[GUI] new connection');
