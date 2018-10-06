@@ -24,6 +24,22 @@ const updateUI = ({ type, id, value }) => io.emit(
 
 registerCANCallbacks(conf.subchannels, updateUI);
 
+const setValue = (data) => {
+  console.log(`[GUI] -> node: ${data.fkt} ${data.dev} ${data.val}`);
+  const subchannel = conf.get_subchannel_by_id(data.dev);
+  if (typeof subchannel === 'undefined') {
+    console.error(`could not find subchannel with id ${data.dev}`);
+    return;
+  }
+  // MPD packet
+  if (subchannel.lapaddr < 0 ) {
+    setMpdValue(subchannel, data);
+    return;
+  }
+  // CAN packet
+  sendCANData(subchannel, data);
+}
+
 io.sockets.on('connection', function (socket) {
   console.log('[GUI] new connection');
   socket.on('GetStat', function (data) {
@@ -44,21 +60,7 @@ io.sockets.on('connection', function (socket) {
     socket.emit('UpdateGUI', clientChannels);
   });
 
-  socket.on('SetValue', (data) => {
-    console.log(`[GUI] -> node: ${data.fkt} ${data.dev} ${data.val}`);
-    const subchannel = conf.get_subchannel_by_id(data.dev);
-    if (typeof subchannel === 'undefined') {
-      console.error(`could not find subchannel with id ${data.dev}`);
-      return;
-    }
-    // MPD packet
-    if (subchannel.lapaddr < 0 ) {
-      setMpdValue(subchannel, data);
-      return;
-    }
-    // CAN packet
-    sendCANData(subchannel, data);
-  });
+  socket.on('SetValue', setValue);
 });
 
 process.on('exit', function () {
