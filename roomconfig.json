@@ -424,48 +424,25 @@
       "devices": [
         {
           "lapaddr": 96,
-          "name": "Labnode Tür",
+          "name": "Labnode",
           "channels": [
             {
-              "name": "Spot 1",
+              "name": "Neon Wand",
               "subchannels": [
                 {
                   "type": "swt",
                   "port": 2,
                   "data0": 0,
-                  "data1": 0,
+                  "data1": 8,
                   "action": 2,
                   "response_srcport": 3,
-                  "response_bit": 0
+                  "response_bit": 8
                 },
                 {
                   "type": "sld",
                   "port": 2,
                   "data0": 1,
                   "data1": 0,
-                  "action": 2,
-                  "response_srcport": 3,
-                  "response_byte": 1
-                }
-              ]
-            },
-            {
-              "name": "Spot 2",
-              "subchannels": [
-                {
-                  "type": "swt",
-                  "port": 2,
-                  "data0": 0,
-                  "data1": 1,
-                  "action": 2,
-                  "response_srcport": 3,
-                  "response_bit": 1
-                },
-                {
-                  "type": "sld",
-                  "port": 2,
-                  "data0": 1,
-                  "data1": 1,
                   "action": 2,
                   "response_srcport": 3,
                   "response_byte": 2
@@ -473,7 +450,30 @@
               ]
             },
             {
-              "name": "Spot 3",
+              "name": "Neon Tür",
+              "subchannels": [
+                {
+                  "type": "swt",
+                  "port": 2,
+                  "data0": 0,
+                  "data1": 9,
+                  "action": 2,
+                  "response_srcport": 3,
+                  "response_bit": 9
+                },
+                {
+                  "type": "sld",
+                  "port": 2,
+                  "data0": 1,
+                  "data1": 1,
+                  "action": 2,
+                  "response_srcport": 3,
+                  "response_byte": 3
+                }
+              ]
+            },
+            {
+              "name": "Spots Wand",
               "subchannels": [
                 {
                   "type": "swt",
@@ -485,20 +485,6 @@
                   "response_bit": 2
                 },
                 {
-                  "type": "sld",
-                  "port": 2,
-                  "data0": 1,
-                  "data1": 2,
-                  "action": 2,
-                  "response_srcport": 3,
-                  "response_byte": 3
-                }
-              ]
-            },
-            {
-              "name": "Neon",
-              "subchannels": [
-                {
                   "type": "swt",
                   "port": 2,
                   "data0": 0,
@@ -508,130 +494,45 @@
                   "response_bit": 3
                 },
                 {
-                  "type": "sld",
+                  "type": "swt",
                   "port": 2,
-                  "data0": 1,
-                  "data1": 3,
+                  "data0": 0,
+                  "data1": 4,
                   "action": 2,
                   "response_srcport": 3,
-                  "response_byte": 4
+                  "response_bit": 4
                 }
               ]
             },
             {
-              "name": "Alle",
-              "subchannels": [
-                {
-                  "type": "swt",
-                  "port": 2,
-                  "data0": 3,
-                  "data1": 0,
-                  "action": 2
-                },
-                {
-                  "type": "sld",
-                  "port": 2,
-                  "data0": 4,
-                  "data1": 0,
-                  "action": 2
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "lapaddr": 97,
-          "name": "Labnode Wand",
-          "channels": [
-            {
-              "name": "Spot 1",
+              "name": "Spots Tür",
               "subchannels": [
                 {
                   "type": "swt",
                   "port": 2,
                   "data0": 0,
-                  "data1": 0,
+                  "data1": 5,
                   "action": 2,
                   "response_srcport": 3,
-                  "response_bit": 0
+                  "response_bit": 5
                 },
-                {
-                  "type": "sld",
-                  "port": 2,
-                  "data0": 1,
-                  "data1": 0,
-                  "action": 2,
-                  "response_srcport": 3,
-                  "response_byte": 1
-                }
-              ]
-            },
-            {
-              "name": "Spot 2",
-              "subchannels": [
                 {
                   "type": "swt",
                   "port": 2,
                   "data0": 0,
-                  "data1": 1,
+                  "data1": 6,
                   "action": 2,
                   "response_srcport": 3,
-                  "response_bit": 1
+                  "response_bit": 6
                 },
-                {
-                  "type": "sld",
-                  "port": 2,
-                  "data0": 1,
-                  "data1": 1,
-                  "action": 2,
-                  "response_srcport": 3,
-                  "response_byte": 2
-                }
-              ]
-            },
-            {
-              "name": "Spot 3",
-              "subchannels": [
                 {
                   "type": "swt",
                   "port": 2,
                   "data0": 0,
-                  "data1": 2,
+                  "data1": 7,
                   "action": 2,
                   "response_srcport": 3,
-                  "response_bit": 2
-                },
-                {
-                  "type": "sld",
-                  "port": 2,
-                  "data0": 1,
-                  "data1": 2,
-                  "action": 2,
-                  "response_srcport": 3,
-                  "response_byte": 3
-                }
-              ]
-            },
-            {
-              "name": "Neon",
-              "subchannels": [
-                {
-                  "type": "swt",
-                  "port": 2,
-                  "data0": 0,
-                  "data1": 3,
-                  "action": 2,
-                  "response_srcport": 3,
-                  "response_bit": 3
-                },
-                {
-                  "type": "sld",
-                  "port": 2,
-                  "data0": 1,
-                  "data1": 3,
-                  "action": 2,
-                  "response_srcport": 3,
-                  "response_byte": 4
+                  "response_bit": 7
                 }
               ]
             },
@@ -721,21 +622,7 @@
           "name": "Bastelcmd",
           "channels": [
             {
-              "name": "Basteltische Mitte #1",
-              "subchannels": [
-                {
-                  "type": "swt",
-                  "port": 1,
-                  "data0": 0,
-                  "data1": 1,
-                  "action": 2,
-                  "response_srcport": 3,
-                  "response_bit": 1
-                }
-              ]
-            },
-            {
-              "name": "Basteltische Mitte #2",
+              "name": "Basteltische",
               "subchannels": [
                 {
                   "type": "swt",
@@ -745,12 +632,7 @@
                   "action": 2,
                   "response_srcport": 3,
                   "response_bit": 2
-                }
-              ]
-            },
-            {
-              "name": "Basteltische Fenster #1",
-              "subchannels": [
+                },
                 {
                   "type": "swt",
                   "port": 1,
@@ -759,34 +641,6 @@
                   "action": 2,
                   "response_srcport": 3,
                   "response_bit": 3
-                }
-              ]
-            },
-            {
-              "name": "Basteltische Fenster #2",
-              "subchannels": [
-                {
-                  "type": "swt",
-                  "port": 1,
-                  "data0": 0,
-                  "data1": 4,
-                  "action": 2,
-                  "response_srcport": 3,
-                  "response_bit": 4
-                }
-              ]
-            },
-            {
-              "name": "Große Neon Fenster",
-              "subchannels": [
-                {
-                  "type": "swt",
-                  "port": 1,
-                  "data0": 0,
-                  "data1": 5,
-                  "action": 2,
-                  "response_srcport": 3,
-                  "response_bit": 5
                 },
                 {
                   "type": "sld",
@@ -800,7 +654,21 @@
               ]
             },
             {
-              "name": "Große Neon Mitte",
+              "name": "LED-Panel Orgaschrank",
+              "subchannels": [
+                {
+                  "type": "swt",
+                  "port": 1,
+                  "data0": 0,
+                  "data1": 5,
+                  "action": 2,
+                  "response_srcport": 3,
+                  "response_bit": 5
+                }
+              ]
+            },
+            {
+              "name": "Neon Mitte",
               "subchannels": [
                 {
                   "type": "swt",
@@ -823,7 +691,7 @@
               ]
             },
             {
-              "name": "Große Neon Drucker",
+              "name": "Neon Laser",
               "subchannels": [
                 {
                   "type": "swt",
