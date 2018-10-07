@@ -3,6 +3,10 @@
     "port": 8880,
     "hostname": "127.0.0.1"
   },
+  "mqtt": {
+    "port": 1883,
+    "hostname": "10.0.1.5"
+  },
   "canconfig": {
     "port": 2342,
     "hostname": "10.0.1.4"
