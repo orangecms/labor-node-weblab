@@ -52,6 +52,28 @@ const get_subchannel_by_id = id => subchannels.find(
   ({ id: subchannelId }) => subchannelId == id
 );
 
+const get_subchannel = ({
+  roomName,
+  deviceName,
+  channelName,
+  subchannelNameOrType
+}) => {
+  const room = rooms.find(({ name }) => name === roomName);
+  if (!room) return;
+  const device = room.devices.find(
+    ({ name }) => name === deviceName
+  );
+  if (!device) return;
+  const channel = device.channels.find(
+    ({ name }) => name === channelName
+  );
+  if (!channel) return;
+  const subchannel = channel.subchannels.find(
+    ({ name, type }) => [name, type].includes(subchannelNameOrType)
+  );
+  return subchannel;
+};
+
 const get_subchannel_by_response = ({
   source_addr,
   source_port,
@@ -107,6 +129,7 @@ module.exports = {
   global: globalconfig,
   conf: config,
   subchannels,
+  get_subchannel,
   get_subchannel_by_id,
   get_subchannel_by_response,
   get_subchannel_with_value,
