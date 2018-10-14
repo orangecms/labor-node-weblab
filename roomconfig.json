@@ -473,7 +473,7 @@
               ]
             },
             {
-              "name": "Spots Wand",
+              "name": "SpotWall1",
               "subchannels": [
                 {
                   "type": "swt",
@@ -483,7 +483,12 @@
                   "action": 2,
                   "response_srcport": 3,
                   "response_bit": 2
-                },
+                }
+              ]
+            },
+            {
+              "name": "SpotWall2",
+              "subchannels": [
                 {
                   "type": "swt",
                   "port": 2,
@@ -492,7 +497,12 @@
                   "action": 2,
                   "response_srcport": 3,
                   "response_bit": 3
-                },
+                }
+              ]
+            },
+            {
+              "name": "SpotWall3",
+              "subchannels": [
                 {
                   "type": "swt",
                   "port": 2,
@@ -505,7 +515,7 @@
               ]
             },
             {
-              "name": "Spots Tür",
+              "name": "SpotDoor1",
               "subchannels": [
                 {
                   "type": "swt",
@@ -515,7 +525,12 @@
                   "action": 2,
                   "response_srcport": 3,
                   "response_bit": 5
-                },
+                }
+              ]
+            },
+            {
+              "name": "SpotDoor2",
+              "subchannels": [
                 {
                   "type": "swt",
                   "port": 2,
@@ -524,7 +539,12 @@
                   "action": 2,
                   "response_srcport": 3,
                   "response_bit": 6
-                },
+                }
+              ]
+            },
+            {
+              "name": "SpotDoor3",
+              "subchannels": [
                 {
                   "type": "swt",
                   "port": 2,
